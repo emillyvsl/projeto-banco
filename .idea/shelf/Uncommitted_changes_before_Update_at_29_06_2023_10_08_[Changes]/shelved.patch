@@ -1,0 +1,38 @@
+Index: app/cadastrarBanco.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import tkinter as tk\r\n\r\nclass CadastrarBanco:\r\n    def __init__(self, master):\r\n        self._janela = tk.Toplevel(master)\r\n        self._janela.title(\"Cadastro de Banco\")\r\n        self._janela.geometry('500x500')\r\n\r\n        btn = tk.Button(self._janela, text='Voltar', command=self.voltar)\r\n        btn.pack()\r\n       \r\n    def voltar(self):\r\n        self._janela.destroy()\r\n        self.janela_anterior.deiconify()\r\n\r\n\r\n        \r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/cadastrarBanco.py b/app/cadastrarBanco.py
+--- a/app/cadastrarBanco.py	(revision a3a7c78acece7c712e8c01c31aaa026a1688b100)
++++ b/app/cadastrarBanco.py	(date 1688050489057)
+@@ -1,4 +1,7 @@
++import sys
+ import tkinter as tk
++from classes.banco import Banco
++
+ 
+ class CadastrarBanco:
+     def __init__(self, master):
+@@ -6,8 +9,17 @@
+         self._janela.title("Cadastro de Banco")
+         self._janela.geometry('500x500')
+ 
+-        btn = tk.Button(self._janela, text='Voltar', command=self.voltar)
+-        btn.pack()
++        lbl_nome = tk.Label(self._janela, text='nome: ')
++        lbl_nome.grid(row=0, column=0)
++
++        ent = tk.Entry(self._janela)
++        ent.grid(row=0, column=1)
++
++        btn_salvar = tk.Button(self._janela, text='Salvar', command=self.voltar)
++        btn_salvar.pack()
++
++        btn_voltar = tk.Button(self._janela, text='Voltar', command=self.voltar)
++        btn_voltar.pack()
+        
+     def voltar(self):
+         self._janela.destroy()
