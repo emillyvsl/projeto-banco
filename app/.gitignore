@@ -1,0 +1,21 @@
+from pathlib import Path
+
+def add_to_gitignore(directory):
+    gitignore_path = Path(".gitignore")
+    directory_entry = f"/{directory}\n"
+
+    if gitignore_path.is_file():
+        with gitignore_path.open("r") as file:
+            content = file.read()
+
+        if directory_entry in content:
+            print(f"O diretório '{directory}' já está no arquivo .gitignore.")
+            return
+
+    with gitignore_path.open("a") as file:
+        file.write(directory_entry)
+
+    print(f"O diretório '{directory}' foi adicionado ao arquivo .gitignore.")
+
+# Chama a função para adicionar o diretório .idea ao arquivo .gitignore
+add_to_gitignore(".idea")

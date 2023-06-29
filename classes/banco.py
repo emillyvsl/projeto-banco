@@ -37,7 +37,7 @@ class Banco:
         Banco._bancos.append(self)
 
     @classmethod
-    def mostrar(cls):
-       return [i.nome for i in cls._bancos]
+    def mostrarBancos(cls):
+        return [banco.nome for banco in cls._bancos]
 
 
