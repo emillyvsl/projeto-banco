@@ -7,7 +7,7 @@ from classes.banco import Banco
 
 class CadastrarBanco:
     def mostrar(self):
-        BB=Banco(self.etr.get())
+        bb=Banco(self.etr.get())
         lbl = tk.Label(self._janela, text=BB.numero)
         lbl.pack()
 
