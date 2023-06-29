@@ -1,21 +1,21 @@
 class Banco:
     _id = 0
+    _bancos = []
 
     def __init__(self, nome):
         self.__num = self.num()
         self.__nome = nome
         self.__contas = []
-        
-
-#metodos
+        self.incluirBancos()
+    #métodos
     @classmethod
     def num(cls):
-        cls._id +=1
+        cls._id += 1
         return cls._id
+
     @property
     def numero(self):
         return self.__num
-
 
     @property
     def nome(self):
@@ -32,4 +32,12 @@ class Banco:
     @listaContas.setter
     def listaContas(self, value):
         self.__contas.append(value)
+
+    def incluirBancos(self):
+        Banco._bancos.append(self)
+
+    @classmethod
+    def mostrar(cls):
+       return [i.nome for i in cls._bancos]
+
 
