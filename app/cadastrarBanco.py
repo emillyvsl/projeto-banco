@@ -22,7 +22,7 @@ class CadastrarBanco:
         self.lbl_nome.grid(row=0, column=0)
         self.etr = tk.Entry(self._janela)
         self.etr.grid(row=0, column=1)
-
+#cadastrar bancos
         btn_cadastrar = tk.Button(self._janela, text='cadastrar', command=self.cadastrarBanco)
         btn_cadastrar.grid(row=1, column=1)
 

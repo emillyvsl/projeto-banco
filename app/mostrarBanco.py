@@ -15,7 +15,7 @@ class MostrarBanco:
         self._janela.title("Lista de Bancos")
         self._janela.geometry('500x500')
 
-
+#mostrar bancos
         btn_mostrar = tk.Button(self._janela, command=self.mostrarBancos, text='Mostrar todos os bancos')
         btn_mostrar.pack()
 
