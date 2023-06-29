@@ -5,6 +5,7 @@ class Banco:
         self.__num = self.num()
         self.__nome = nome
         self.__contas = []
+        
 
 #metodos
     @classmethod
