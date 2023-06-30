@@ -7,6 +7,13 @@ from verClientes import VerClientes
 from mostrarBanco import MostrarBanco
 from atualizarBanco import AtualizarBanco
 from cadastrarBanco import CadastrarBanco
+import sys
+
+
+sys.path.insert(0, './')
+sys.path.insert(0, './banco')
+
+
 
 class TelaPrincipal:
     def __init__(self, master):
@@ -19,9 +26,11 @@ class TelaPrincipal:
 
         mnu_banco = tk.Menu(mnu_barra)
         mnu_barra.add_cascade(label='Banco', menu=mnu_banco)
-        mnu_banco.add_command(label='Cadastrar banco', command=self.abrir_cadastrar_banco)
+        mnu_banco.add_command(
+            label='Cadastrar banco', command=self.abrir_cadastrar_banco)
 
-        mnu_banco.add_command(label='Mostrar bancos', command=self.abrir_mostrar_banco)
+        mnu_banco.add_command(
+            label='Mostrar bancos', command=self.abrir_mostrar_banco)
         mnu_banco.add_command(label='Atualizar informações', command=self.abrir_atualizar_banco)
 
         mnu_cliente = tk.Menu(mnu_barra)
@@ -35,35 +44,37 @@ class TelaPrincipal:
         mnu_conta.add_command(label='Conta Corrente', command=self.abrir_conta_corrente)
         mnu_conta.add_command(label='Conta Poupança', command=self.abrir_conta_poupanca)
 
-    #Funções para abrir as janelas
+    # Funções para abrir as janelas
     def abrir_cadastrar_banco(self):
-        cadastrar_banco = CadastrarBanco(self._janela)
+        CadastrarBanco(self._janela)
 
     def abrir_atualizar_banco(self):
-        atualizar_banco = AtualizarBanco(self._janela)
+        AtualizarBanco(self._janela)
 
     def abrir_mostrar_banco(self):
-        mostrar_banco = MostrarBanco(self._janela)
+        MostrarBanco(self._janela)
     
     def abrir_ver_cliente(self):
-        ver_clientes = VerClientes(self._janela)
+        VerClientes(self._janela)
 
     def abrir_adicionar_cliente(self):
-        adicinar_clientes = AdicionarClientes(self._janela)
+        AdicionarClientes(self._janela)
 
     def abrir_criar_conta(self):
-        criar_conta = CriarConta(self._janela)
+        CriarConta(self._janela)
 
     def abrir_conta_corrente(self):
-        conta_corrente = ContaCorrente(self._janela)
+        ContaCorrente(self._janela)
 
     def abrir_conta_poupanca(self):
-        conta_poupanca = ContaPoupanca(self._janela)
+        ContaPoupanca(self._janela)
 
-    #c
 
-    
+def main():    
+    master = tk.Tk()
+    app = TelaPrincipal(master)
+    master.mainloop()
 
-master = tk.Tk()
-app = TelaPrincipal(master)
-master.mainloop()
+
+if __name__ == '__main__':
+    main()

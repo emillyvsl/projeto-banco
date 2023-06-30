@@ -1,7 +1,10 @@
 import tkinter as tk
 import sys
-sys.path.append('../')
+sys.path.insert(0, './')
+sys.path.insert(0, './classes')
+
 from classes.banco import Banco
+
 
 class MostrarBanco:
 
@@ -10,12 +13,13 @@ class MostrarBanco:
         for nome_banco in lista_bancos:
             lbl = tk.Label(self._janela, text=nome_banco)
             lbl.pack()
+
     def __init__(self, master):
         self._janela = tk.Toplevel(master)
         self._janela.title("Lista de Bancos")
         self._janela.geometry('500x500')
 
-#mostrar bancos
+
         btn_mostrar = tk.Button(self._janela, command=self.mostrarBancos, text='Mostrar todos os bancos')
         btn_mostrar.pack()
 

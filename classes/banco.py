@@ -7,7 +7,8 @@ class Banco:
         self.__nome = nome
         self.__contas = []
         self.incluirBancos()
-    #métodos
+
+    # métodos
     @classmethod
     def num(cls):
         cls._id += 1
@@ -39,6 +40,3 @@ class Banco:
     @classmethod
     def mostrarBancos(cls):
         return [banco.nome for banco in cls._bancos]
-
-
-#banco
