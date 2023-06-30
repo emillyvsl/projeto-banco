@@ -2,7 +2,7 @@ import tkinter as tk
 from adicionarCliente import AdicionarClientes
 from contaCorrente import ContaCorrente
 from contaPoupanca import ContaPoupanca
-from criarConta import CriarConta
+from criarContaC import CriarContaC
 from verClientes import VerClientes
 from mostrarBanco import MostrarBanco
 from atualizarBanco import AtualizarBanco
@@ -40,7 +40,16 @@ class TelaPrincipal:
 
         mnu_conta = tk.Menu(mnu_barra)
         mnu_barra.add_cascade(label='Conta', menu=mnu_conta)
-        mnu_conta.add_command(label='Criar Conta', command=self.abrir_criar_conta)
+        
+
+        submenu_criar_conta = tk.Menu(mnu_conta)
+        mnu_conta.add_cascade(label='Criar Conta', menu=submenu_criar_conta)
+
+        # Adicionar as opções do submenu "Criar Conta"
+        submenu_criar_conta.add_command(label='Conta Corrente', command=self.abrir_criar_contaC)
+        submenu_criar_conta.add_command(label='Conta Poupança')
+
+
         mnu_conta.add_command(label='Conta Corrente', command=self.abrir_conta_corrente)
         mnu_conta.add_command(label='Conta Poupança', command=self.abrir_conta_poupanca)
 
@@ -60,8 +69,8 @@ class TelaPrincipal:
     def abrir_adicionar_cliente(self):
         AdicionarClientes(self._janela)
 
-    def abrir_criar_conta(self):
-        CriarConta(self._janela)
+    def abrir_criar_contaC(self):
+        CriarContaC(self._janela)
 
     def abrir_conta_corrente(self):
         ContaCorrente(self._janela)
