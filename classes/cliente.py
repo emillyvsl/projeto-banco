@@ -1,10 +1,12 @@
 class Cliente:
     _id=0
+    _clientes = []
     def __init__(self, n, e, cpf):
         self.__num = self.num()
         self.__nome = n
         self.__endereco = e
         self.__CPF = cpf
+        self.incluirCliente()
 #Métodos
     @classmethod
     def num(cls):
@@ -37,3 +39,11 @@ class Cliente:
     @cpf.setter
     def cpf(self, value):
         self.__CPF = value
+
+
+    def incluirCliente(self):
+        Cliente._clientes.append(self)
+    @classmethod
+    def mostrarClientes(cls):
+        return [i.nome for i in cls._clientes]
+

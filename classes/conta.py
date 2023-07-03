@@ -1,10 +1,12 @@
 class Conta:
     _id =0
-    def __init__(self, cli, sal,banco=None):
+    _contas=[]
+    def __init__(self, cli, sal=0,banco=None):
         self.__numero = self.num()
         self.__banco = banco
         self.__titular = cli
         self.__saldo = sal
+        self.incluirConta()
 #Métodos
 
     @classmethod
@@ -38,3 +40,9 @@ class Conta:
     def banco(self):
         if self.__banco != None:
             return self.__banco
+    def incluirConta(self):
+        Conta._contas.append(self)
+
+    @classmethod
+    def mostrarContas(cls):
+        return [i.titular for i in cls._contas]
