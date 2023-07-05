@@ -1,3 +1,6 @@
+from conta import Conta
+
+
 class ContaCorrente(Conta):
     def __init__(self,cli,saldo,desconto,banco=None,):
         super.__init__(self,cli,saldo,banco)

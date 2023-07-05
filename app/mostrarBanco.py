@@ -70,7 +70,6 @@ class MostrarBanco:
         self._janela.destroy()
         self.janela_anterior.deiconify()
 
-    def incluir_banco(self):
-        CadastrarBanco(self._janela)
+    
 
         self._janela.mainloop()

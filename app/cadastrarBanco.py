@@ -1,7 +1,8 @@
 import tkinter as tk
 
 import sys
-sys.path.append('../')
+sys.path.insert(0, './')
+sys.path.insert(0, './classes')
 from classes.banco import Banco
 
 
