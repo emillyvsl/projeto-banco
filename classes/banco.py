@@ -39,4 +39,4 @@ class Banco:
 
     @classmethod
     def mostrarBancos(cls):
-        return [banco.nome for banco in cls._bancos]
+        return [(banco.numero, banco.nome) for banco in cls._bancos]

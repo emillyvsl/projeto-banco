@@ -8,13 +8,13 @@ from classes.banco import Banco
 class CadastrarBanco:
     def cadastrarBanco(self):
         BB=Banco(self.etr.get()) #instância da classe Banco, passando o valor obtido do widget Entry
-
         lbl = tk.Label(self._janela, text=f"ID: {BB.numero}\nNome: {BB.nome}") #exibirá o valor do atributo numero/nome do objeto BB
         lbl.grid(row=3, column=1)
 
-    def __init__(self, master):
-        self._janela = tk.Toplevel(master)
-        self._janela.title("Cadastro de Banco")
+    def __init__(self, janela_anterior):
+        self.janela_anterior = janela_anterior
+        self._janela = tk.Toplevel(self.janela_anterior)
+        self._janela.title("Cadastrar Banco")
         self._janela.geometry('500x500')
 
         self.lbl_nome = tk.Label(self._janela, text='Nome: ')
