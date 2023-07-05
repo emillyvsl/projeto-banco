@@ -35,8 +35,8 @@ class TelaPrincipal:
 
         mnu_cliente = tk.Menu(mnu_barra)
         mnu_barra.add_cascade(label='Cliente', menu=mnu_cliente)
-        mnu_cliente.add_command(label='Ver clientes', command=self.abrir_ver_cliente)
         mnu_cliente.add_command(label='Adicionar clientes', command=self.abrir_adicionar_cliente)
+        mnu_cliente.add_command(label='Ver clientes', command=self.abrir_ver_cliente)
 
         mnu_conta = tk.Menu(mnu_barra)
         mnu_barra.add_cascade(label='Conta', menu=mnu_conta)

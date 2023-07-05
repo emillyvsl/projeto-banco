@@ -65,6 +65,9 @@ class MostrarBanco:
 
         btn = tk.Button(frame_btn, text='Voltar', command=self.voltar)
         btn.grid(row=5, column=4)
+        
+    def incluir_banco(self):
+        CadastrarBanco(self._janela)
 
     def voltar(self):
         self._janela.destroy()
