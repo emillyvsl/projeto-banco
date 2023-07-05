@@ -44,6 +44,11 @@ class Cliente:
     def incluirCliente(self):
         Cliente._clientes.append(self)
     @classmethod
+    
+    @classmethod
     def mostrarClientes(cls):
-        return [i.nome for i in cls._clientes]
+        return cls._clientes
+
+    
+    
 

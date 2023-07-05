@@ -16,9 +16,9 @@ class AdicionarClientes:
         lbl_info.grid(row=4, columnspan=2)
 
 
-    def __init__(self, master):
-        self.janela_anterior = master
-        self._janela = tk.Toplevel(master)
+    def __init__(self, janela_anterior):
+        self.janela_anterior = janela_anterior
+        self._janela = tk.Toplevel(janela_anterior)
         self._janela.title("Adicionar clientes")
         self._janela.geometry('500x500')
 
@@ -40,12 +40,9 @@ class AdicionarClientes:
         btn_salvar = tk.Button(self._janela, text='Salvar', command=self.adicionarCliente)
         btn_salvar.grid(row=3, columnspan=2)
 
-        
-
-        
-
+    
         btn = tk.Button(self._janela, text='Voltar', command=self.voltar)
-        btn.pack()
+        btn.grid(row=4, columnspan=2)
        
     def voltar(self):
         self._janela.destroy()
