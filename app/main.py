@@ -6,14 +6,14 @@ from criarContaC import CriarContaC
 from verClientes import VerClientes
 from mostrarBanco import MostrarBanco
 from atualizarBanco import AtualizarBanco
+
 from cadastrarBanco import CadastrarBanco
+
 import sys
-
-
 sys.path.insert(0, './')
 sys.path.insert(0, './banco')
-
-
+sys.path.insert(0, './classes')
+from classes.banco import Banco
 
 class TelaPrincipal:
     def __init__(self, master):

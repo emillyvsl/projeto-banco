@@ -1,6 +1,8 @@
 import tkinter as tk
 
 import sys
+from tkinter import messagebox
+#from mostrarBanco import MostrarBanco
 sys.path.insert(0, './')
 sys.path.insert(0, './classes')
 from classes.banco import Banco
@@ -11,6 +13,8 @@ class CadastrarBanco:
         BB=Banco(self.etr.get()) #instância da classe Banco, passando o valor obtido do widget Entry
         lbl = tk.Label(self._janela, text=f"ID: {BB.numero}\nNome: {BB.nome}") #exibirá o valor do atributo numero/nome do objeto BB
         lbl.grid(row=3, column=1)
+        messagebox.showinfo("Sucesso", "Banco cadastrado com sucesso!")
+
 
     def __init__(self, janela_anterior):
         self.janela_anterior = janela_anterior
@@ -28,6 +32,12 @@ class CadastrarBanco:
 
         btn = tk.Button(self._janela, text='Voltar', command=self.voltar)
         btn.grid(row=2, column=1)
+
+        btn_ver = tk.Button(self._janela, text='Ver bancos')#command=self.lista_banco
+        btn_ver.grid(row=3, column=1)
+
+    # def lista_banco(self):
+        # MostrarBanco(self._janela)
 
     def voltar(self):
         self._janela.destroy()

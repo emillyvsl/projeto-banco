@@ -1,5 +1,6 @@
 import tkinter as tk
 import sys
+from tkinter import messagebox
 sys.path.insert(0, './')
 sys.path.insert(0, './classes')
 from classes.cliente import Cliente
@@ -11,9 +12,9 @@ class AdicionarClientes:
         cpf = self.ent_cpf.get()
         endereco = self.ent_endereco.get()
         cli = Cliente(nome, cpf, endereco)
-
+        messagebox.showinfo("Sucesso", "Cliente cadastrado com sucesso!")
         lbl_info = tk.Label(self._janela, text=f"ID: {cli.numero}\nNome: {cli.nome}\nCPF: {cli.cpf}\nEndereço: {cli.endereco}")
-        lbl_info.grid(row=4, columnspan=2)
+        lbl_info.grid(row=6, columnspan=2)
 
 
     def __init__(self, janela_anterior):

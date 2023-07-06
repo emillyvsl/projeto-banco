@@ -13,6 +13,7 @@ class ContaCorrente(Conta):
     @deconto.setter
     def deconto(self, value):
         self.__desconto = value
+        
     def depositar(self, valor):
         desco = valor * self.deconto
         valor -= desco

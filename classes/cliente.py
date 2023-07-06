@@ -43,7 +43,7 @@ class Cliente:
 
     def incluirCliente(self):
         Cliente._clientes.append(self)
-    @classmethod
+    
     
     @classmethod
     def mostrarClientes(cls):

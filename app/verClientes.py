@@ -1,6 +1,7 @@
 import tkinter as tk
 import sys
 from tkinter import ttk
+from adicionarCliente import AdicionarClientes
 sys.path.insert(0, './')
 sys.path.insert(0, './classes')
 
@@ -12,6 +13,7 @@ class VerClientes:
         for cliente in lista_cliente:
             self.treeview.insert('', 'end', values=(cliente.numero, cliente.nome, cliente.cpf, cliente.endereco))
 
+    
 
 
     def __init__(self, janela_anterior):
@@ -53,8 +55,26 @@ class VerClientes:
 
 
 
-        btn = tk.Button(self._janela, text='Voltar', command=self.voltar)
-        btn.pack()
+        frame_btn = tk.Frame(self._janela)
+        frame_btn.grid(row=5,column=0)
+        
+        btn_editar = tk.Button(frame_btn, text='Editar') #command=self.editar
+        btn_editar.grid(row=5, column=0)
+
+        btn_excluir = tk.Button(frame_btn, text='Excluir')#,command=self.excluir
+        btn_excluir.grid(row=5,column=1)
+
+        btn_incluir = tk.Button(frame_btn, text='Incluir', command=self.incluir_cliente)
+        btn_incluir.grid(row=5, column=2)
+
+        btn_pesq = tk.Button(frame_btn, text='Pesquisar')
+        btn_pesq.grid(row=5,column=3)
+
+        btn = tk.Button(frame_btn, text='Voltar', command=self.voltar)
+        btn.grid(row=5, column=4)
+
+    def incluir_cliente(self):
+        AdicionarClientes(self._janela)
        
     def voltar(self):
         self._janela.destroy()

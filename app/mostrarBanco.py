@@ -1,11 +1,12 @@
 import tkinter as tk
 import sys
 from tkinter import ttk
+from cadastrarBanco import CadastrarBanco
 sys.path.insert(0, './')
 sys.path.insert(0, './classes')
 
 from classes.banco import Banco
-from cadastrarBanco import CadastrarBanco
+
 
 class MostrarBanco:
     def mostrarBancos(self):
@@ -15,6 +16,7 @@ class MostrarBanco:
 
     def __init__(self, janela_anterior):
         self.janela_anterior = janela_anterior
+        #self.cadastrar_banco = cadastrar_banco
         self._janela = tk.Toplevel(self.janela_anterior)
         self._janela.title("Lista de Bancos")
         self._janela.geometry('500x500')
