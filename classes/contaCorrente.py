@@ -12,14 +12,13 @@ class ContaCorrente(Conta):
     @desconto.setter
     def desconto(self, value):
         self.__desconto = value
-<<<<<<< HEAD
+
         
     def depositar(self, valor):
         desco = valor * self.deconto
         valor -= desco
         self.saldo(valor)
-=======
->>>>>>> c72e333ca0c1b26b5ece222be5af7842646affb6
+
 
     def set_depositar(self, valor):
         desconto = valor * self.desconto
