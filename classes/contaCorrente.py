@@ -1,28 +1,42 @@
 from conta import Conta
 
-
 class ContaCorrente(Conta):
-    def __init__(self,cli,saldo,desconto,banco=None,):
-        super.__init__(self,cli,saldo,banco)
+    def __init__(self, cli, saldo, desconto, banco=None):
+        super().__init__(cli, saldo, banco)
         self.__desconto = desconto
 
     @property
-    def deconto(self):
+    def desconto(self):
         return self.__desconto
 
-    @deconto.setter
-    def deconto(self, value):
+    @desconto.setter
+    def desconto(self, value):
         self.__desconto = value
+<<<<<<< HEAD
         
     def depositar(self, valor):
         desco = valor * self.deconto
         valor -= desco
         self.saldo(valor)
+=======
+>>>>>>> c72e333ca0c1b26b5ece222be5af7842646affb6
 
-    def sacar(self, valor):
+    def set_depositar(self, valor):
         desconto = valor * self.desconto
         valor -= desconto
-        if valor <= self.saldo:
-            self.saldo -= valor
+        if self.status:
+            self.saldo = valor
         else:
-            print("Saldo insuficiente.")
+            return False  # Significa que a conta está desativada
+
+    def set_sacar(self, valor):
+        desconto = valor * self.desconto
+        valor -= desconto
+        if self.status:
+            if valor <= self.saldo:
+                self.saldo -= valor
+                return True
+            else:
+                return False
+        else:
+            return False

@@ -1,0 +1,21 @@
+Index: app/mostrarBanco.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import tkinter as tk\r\n# import sys\r\n# sys.path.insert(0, './')\r\n# sys.path.insert(0, './classes')\r\n\r\nfrom classes.banco import Banco\r\n\r\n\r\nclass MostrarBanco:\r\n\r\n    def mostrarBancos(self):\r\n        lista_bancos = Banco.mostrarBancos()\r\n        for nome_banco in lista_bancos:\r\n            lbl = tk.Label(self._janela, text=nome_banco)\r\n            lbl.pack()\r\n\r\n    def __init__(self, master):\r\n        self._janela = tk.Toplevel(master)\r\n        self._janela.title(\"Lista de Bancos\")\r\n        self._janela.geometry('500x500')\r\n\r\n\r\n        btn_mostrar = tk.Button(self._janela, command=self.mostrarBancos, text='Mostrar todos os bancos')\r\n        btn_mostrar.pack()\r\n\r\n        btn = tk.Button(self._janela, text='Voltar', command=self.voltar)\r\n        btn.pack()\r\n       \r\n    def voltar(self):\r\n        self._janela.destroy()\r\n        self.janela_anterior.deiconify()\r\n\r\n        \r\n\r\n        self._janela.mainloop()
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/mostrarBanco.py b/app/mostrarBanco.py
+--- a/app/mostrarBanco.py	
++++ b/app/mostrarBanco.py	
+@@ -1,7 +1,7 @@
+ import tkinter as tk
+-# import sys
+-# sys.path.insert(0, './')
+-# sys.path.insert(0, './classes')
++import sys
++sys.path.insert(0, './')
++sys.path.insert(0, './classes')
+ 
+ from classes.banco import Banco
+ 
