@@ -1,6 +1,6 @@
 import tkinter as tk
 from adicionarCliente import AdicionarClientes
-from contaCorrente import ContaCorrente
+from contaCorrenteI import ContaCorrenteI
 from contaPoupanca import ContaPoupanca
 from criarContaC import CriarContaC
 from verClientes import VerClientes
@@ -17,14 +17,20 @@ from classes.banco import Banco
 
 class TelaPrincipal:
     def __init__(self, master):
+        
         self._janela = master
         self._janela.title("Sistema Bancário")
         self._janela.geometry('500x500')
 
+         # Trocar a cor de fundo da janela
+        #self._janela.configure(background='PaleTurquoise') 
+
+       
+
         mnu_barra = tk.Menu(self._janela)
         self._janela.config(menu=mnu_barra)
 
-        mnu_banco = tk.Menu(mnu_barra)
+        mnu_banco = tk.Menu(mnu_barra) 
         mnu_barra.add_cascade(label='Banco', menu=mnu_banco)
         mnu_banco.add_command(
             label='Cadastrar banco', command=self.abrir_cadastrar_banco)
@@ -73,7 +79,7 @@ class TelaPrincipal:
         CriarContaC(self._janela)
 
     def abrir_conta_corrente(self):
-        ContaCorrente(self._janela)
+        ContaCorrenteI(self._janela)
 
     def abrir_conta_poupanca(self):
         ContaPoupanca(self._janela)

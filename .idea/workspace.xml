@@ -5,11 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="08eb6305-c1ee-48b3-b6dc-42f53a701b63" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/mostrarBanco.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/mostrarBanco.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/cliente.py" beforeDir="false" afterPath="$PROJECT_DIR$/classes/cliente.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/conta.py" beforeDir="false" afterPath="$PROJECT_DIR$/classes/conta.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/contaCorrente.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +83,6 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="C:\Python311\python.exe" />
-      <option name="SDK_NAME" value="Python 3.11" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/app" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
