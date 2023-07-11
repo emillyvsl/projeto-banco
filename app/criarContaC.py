@@ -87,7 +87,7 @@ class CriarContaC:
         self.contas_cadastradas.append(conta_corrente)
 
         # Exibe as informações da conta cadastrada na label
-        lbl_conta_cadastrada = tk.Label(self._janela, text=f"Conta Cadastrada:\nCliente: {cliente.nome} | Saldo: {saldo}")
+        lbl_conta_cadastrada = tk.Label(self._janela, text=f"Conta Cadastrada:\nCliente: {cliente.nome} | Banco: {banco.nome}")
         lbl_conta_cadastrada.grid(row=6, columnspan=2)
 
         messagebox.showinfo("Sucesso", "Conta corrente criada com sucesso!")
