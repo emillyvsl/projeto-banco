@@ -1,7 +1,7 @@
 from conta import Conta
 
 class ContaCorrente(Conta):
-    def __init__(self, cli, saldo, desconto, banco=None):
+    def __init__(self, cli, banco, desconto, saldo=None):
         super().__init__(cli, saldo, banco)
         self.__desconto = desconto
 
