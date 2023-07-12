@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox
 from adicionarCliente import AdicionarClientes
-from contaCorrente import ContaCorrente
+from contaCorrenteI import ContaCorrenteI
 from contaPoupanca import ContaPoupanca
 from criarContaC import CriarContaC
 from verClientes import VerClientes
@@ -75,7 +75,7 @@ class TelaPrincipal:
             tk.messagebox.showerror("Erro", "Adicione clientes primeiro.")
 
     def abrir_conta_corrente(self):
-        ContaCorrente(self._janela)
+        ContaCorrenteI(self._janela)
 
     def abrir_conta_poupanca(self):
         ContaPoupanca(self._janela)

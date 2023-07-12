@@ -38,12 +38,6 @@ class CriarContaC:
         self.combobox_banco = ttk.Combobox(self._janela, values=nomes_bancos, state='readonly')
         self.combobox_banco.grid(row=1, column=1)
 
-        #lbl_saldo = tk.Label(self._janela, text='Saldo: ')
-        #lbl_saldo.grid(row=2, column=0)
-
-        #self.ent_saldo = tk.Entry(self._janela)
-        #self.ent_saldo.grid(row=2, column=1)
-
         self.lbl_contas_cadastradas = tk.Label(self._janela, text='Contas Cadastradas:')
         self.lbl_contas_cadastradas.grid(row=3, columnspan=2)
 
@@ -62,7 +56,6 @@ class CriarContaC:
     def criar_conta_corrente(self):
         cliente_nome = self.combobox_cliente.get()
         banco_nome = self.combobox_banco.get()
-        #saldo = float(self.ent_saldo.get())
 
         cliente = None
         banco = None
