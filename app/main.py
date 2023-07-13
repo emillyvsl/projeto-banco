@@ -1,6 +1,7 @@
 import tkinter as tk
+from tkinter import messagebox
 from adicionarCliente import AdicionarClientes
-from contaCorrente import ContaCorrente
+from contaCorrenteI import ContaCorrenteI
 from contaPoupanca import ContaPoupanca
 from criarContaC import CriarContaC
 from verClientes import VerClientes
@@ -9,11 +10,10 @@ from atualizarBanco import AtualizarBanco
 from cadastrarBanco import CadastrarBanco
 import sys
 
-
 sys.path.insert(0, './')
 sys.path.insert(0, './banco')
-
-
+sys.path.insert(0, './classes')
+from classes.banco import Banco
 
 class TelaPrincipal:
     def __init__(self, master):
@@ -21,16 +21,16 @@ class TelaPrincipal:
         self._janela.title("Sistema Bancário")
         self._janela.geometry('500x500')
 
+        self.adicionar_clientes = None  # Inicializa o atributo como None
+        self.adicionar_banco = None  # Inicializa o atributo como None
+
         mnu_barra = tk.Menu(self._janela)
         self._janela.config(menu=mnu_barra)
 
         mnu_banco = tk.Menu(mnu_barra)
         mnu_barra.add_cascade(label='Banco', menu=mnu_banco)
-        mnu_banco.add_command(
-            label='Cadastrar banco', command=self.abrir_cadastrar_banco)
-
-        mnu_banco.add_command(
-            label='Mostrar bancos', command=self.abrir_mostrar_banco)
+        mnu_banco.add_command(label='Cadastrar banco', command=self.abrir_cadastrar_banco)
+        mnu_banco.add_command(label='Mostrar bancos', command=self.abrir_mostrar_banco)
         mnu_banco.add_command(label='Atualizar informações', command=self.abrir_atualizar_banco)
 
         mnu_cliente = tk.Menu(mnu_barra)
@@ -40,46 +40,48 @@ class TelaPrincipal:
 
         mnu_conta = tk.Menu(mnu_barra)
         mnu_barra.add_cascade(label='Conta', menu=mnu_conta)
-        
 
         submenu_criar_conta = tk.Menu(mnu_conta)
         mnu_conta.add_cascade(label='Criar Conta', menu=submenu_criar_conta)
-
-        # Adicionar as opções do submenu "Criar Conta"
         submenu_criar_conta.add_command(label='Conta Corrente', command=self.abrir_criar_contaC)
         submenu_criar_conta.add_command(label='Conta Poupança')
-
 
         mnu_conta.add_command(label='Conta Corrente', command=self.abrir_conta_corrente)
         mnu_conta.add_command(label='Conta Poupança', command=self.abrir_conta_poupanca)
 
     # Funções para abrir as janelas
     def abrir_cadastrar_banco(self):
-        CadastrarBanco(self._janela)
+        self.adicionar_banco = CadastrarBanco(self._janela)
 
     def abrir_atualizar_banco(self):
         AtualizarBanco(self._janela)
 
     def abrir_mostrar_banco(self):
         MostrarBanco(self._janela)
-    
+
     def abrir_ver_cliente(self):
         VerClientes(self._janela)
 
     def abrir_adicionar_cliente(self):
-        AdicionarClientes(self._janela)
+        self.adicionar_clientes = AdicionarClientes(self._janela)
 
     def abrir_criar_contaC(self):
-        CriarContaC(self._janela)
+        if self.adicionar_clientes:
+            if self.adicionar_banco and self.adicionar_banco.bancos:
+                CriarContaC(self._janela, self.adicionar_clientes.clientes, self.adicionar_banco.bancos)
+            else:
+                tk.messagebox.showerror("Erro", "Adicione um banco primeiro.")
+        else:
+            tk.messagebox.showerror("Erro", "Adicione clientes primeiro.")
 
     def abrir_conta_corrente(self):
-        ContaCorrente(self._janela)
+        ContaCorrenteI(self._janela)
 
     def abrir_conta_poupanca(self):
         ContaPoupanca(self._janela)
 
 
-def main():    
+def main():
     master = tk.Tk()
     app = TelaPrincipal(master)
     master.mainloop()
