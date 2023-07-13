@@ -5,13 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="08eb6305-c1ee-48b3-b6dc-42f53a701b63" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/classes/contaPoupanca.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/classes/historico.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_13_07_2023_09_42_[Changes]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_13_07_2023_09_42__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_07_2023_09_45_[Changes]1/shelved.patch" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/classes/banco.py" beforeDir="false" afterPath="$PROJECT_DIR$/classes/banco.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/classes/cliente.py" beforeDir="false" afterPath="$PROJECT_DIR$/classes/cliente.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/classes/conta.py" beforeDir="false" afterPath="$PROJECT_DIR$/classes/conta.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/contaCorrente.py" beforeDir="false" afterPath="$PROJECT_DIR$/classes/contaCorrente.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/historico.py" beforeDir="false" afterPath="$PROJECT_DIR$/classes/historico.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +45,7 @@
     &quot;last_opened_file_path&quot;: &quot;C:/Users/Emilly/Desktop/Trabalho tesi/Projeto-Banco&quot;
   }
 }</component>
-  <component name="RunManager" selected="Python.historico">
+  <component name="RunManager" selected="Python.cliente">
     <configuration name="cliente" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Projeto-Banco" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -159,9 +160,9 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.historico" />
-        <item itemvalue="Python.testes" />
         <item itemvalue="Python.cliente" />
+        <item itemvalue="Python.testes" />
+        <item itemvalue="Python.historico" />
         <item itemvalue="Python.main" />
         <item itemvalue="Python.conta" />
       </list>

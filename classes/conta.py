@@ -1,3 +1,4 @@
+from historico import Historico
 class Conta:
     _id = 0
     _contas = []
@@ -9,6 +10,8 @@ class Conta:
         self.__saldo = sal
         self._status = True
         self.incluirConta()
+        Historico.adicionar_conta(self)
+
 
     @classmethod
     def num(cls):
@@ -76,7 +79,7 @@ class Conta:
 
     @property
     def clientes(self):
-        return self.__titular.mostrarClientes()
+        return self.titular.mostrarClientes()
 
     def encerrarConta(self):
         if self.saldo != 0:  # Se minha conta tiver algum valor, a conta não pode ser encerrada

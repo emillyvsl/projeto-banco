@@ -1,4 +1,6 @@
 from conta import Conta
+# from contaCorrente import ContaCorrente
+# from contaPoupanca import ContaPoupanca
 class Cliente:
     _id = 0
     _clientes = []
@@ -55,14 +57,14 @@ class Cliente:
     def status(self, value):
         self._status = value
 
-    # @classmethod
-    # def removerCliente(cls, cliente):
-    #     associado_conta = (cliente in conta.clientes for conta in Conta.mostrarContas())
-    #     print(f"Asssociado {associado_conta}")
-    #     if associado_conta:
-    #         cliente.status = True
-    #     else:
-    #         cliente.status = False
+    @classmethod
+    def removerCliente(cls, cliente):
+        for i in Conta.mostrarContas():
+            if cliente.numero == i.titular.numero:
+                return False
+        cliente.status = False
+        return True
+
 
     @classmethod
     def mostrarClientes(cls):

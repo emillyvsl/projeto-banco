@@ -1,12 +1,10 @@
-class Hitorico:
-    def __init__(self):
-        self._listaObjetos= []
+class Historico:
+    contas_criadas = []
 
+    @classmethod
+    def adicionar_conta(cls, conta):
+        cls.contas_criadas.append(conta)
 
-    @property
-    def listas(self):
-        return  self._listaObjetos
-
-    @listas.setter
-    def listas(self, value):
-        self._listaObjetos.append(value)
+    @classmethod
+    def listar_contas(cls):
+        return cls.contas_criadas
