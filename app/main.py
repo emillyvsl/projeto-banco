@@ -14,6 +14,7 @@ sys.path.insert(0, './')
 sys.path.insert(0, './banco')
 sys.path.insert(0, './classes')
 from classes.banco import Banco
+from classes.cliente import Cliente
 
 class TelaPrincipal:
     def __init__(self, master):
@@ -67,8 +68,8 @@ class TelaPrincipal:
 
     def abrir_criar_contaC(self):
         if self.adicionar_clientes:
-            if self.adicionar_banco and self.adicionar_banco.bancos:
-                CriarContaC(self._janela, self.adicionar_clientes.clientes, self.adicionar_banco.bancos)
+            if self.adicionar_banco:
+                CriarContaC(self._janela, Banco._bancos, Cliente._clientes)
             else:
                 tk.messagebox.showerror("Erro", "Adicione um banco primeiro.")
         else:

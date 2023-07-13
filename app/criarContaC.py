@@ -7,6 +7,7 @@ sys.path.insert(0, './')
 sys.path.insert(0, './classes')
 
 from classes.cliente import Cliente
+from classes.banco import Banco
 from classes.contaCorrente import ContaCorrente
 
 
@@ -16,26 +17,21 @@ class CriarContaC:
         self._janela = tk.Toplevel(janela_anterior)
         self._janela.title("Criar Conta Corrente")
         self._janela.geometry('500x500')
+        
 
-        self.clientes = clientes
-        self.bancos = bancos
 
         lbl_Cliente = tk.Label(self._janela, text='Escolha um cliente: ')
         lbl_Cliente.grid(row=0, column=0)
 
-        # Criar lista com os nomes dos clientes cadastrados
-        nomes_clientes = [cliente.nome for cliente in clientes]
-
-        self.combobox_cliente = ttk.Combobox(self._janela, values=nomes_clientes, state='readonly')
+      
+        self.combobox_cliente = ttk.Combobox(self._janela, values=[i.nome for i in Cliente._clientes], state='readonly')
         self.combobox_cliente.grid(row=0, column=1)
 
         lbl_banco = tk.Label(self._janela, text='Escolha um banco: ')
         lbl_banco.grid(row=1, column=0)
 
-        # Criar lista com os nomes dos bancos cadastrados
-        nomes_bancos = [banco.nome for banco in bancos]
 
-        self.combobox_banco = ttk.Combobox(self._janela, values=nomes_bancos, state='readonly')
+        self.combobox_banco = ttk.Combobox(self._janela, values=[i.nome for i in Banco._bancos], state='readonly')
         self.combobox_banco.grid(row=1, column=1)
 
         self.lbl_contas_cadastradas = tk.Label(self._janela, text='Contas Cadastradas:')
@@ -47,41 +43,21 @@ class CriarContaC:
         btn_voltar = tk.Button(self._janela, text='Voltar', command=self.voltar)
         btn_voltar.grid(row=5, columnspan=2)
 
-        self.contas_cadastradas = []  # Lista para armazenar as contas cadastradas
+    def criar_conta_corrente(self):
+        cliente_nome = self.combobox_cliente.get()
+        banco_nome = self.combobox_banco.get()
+        contaC = ContaCorrente(cliente_nome, banco_nome)
+        messagebox.showinfo("Sucesso", "Conta corrente cadastrado com sucesso!")
+        lbl_info = tk.Label(self._janela, text=f"ID: {contaC.numero}\nCliente: {contaC.titular}\nBanco: {contaC.banco}")
+        lbl_info.grid(row=6, columnspan=2)
+        
+
 
     def voltar(self):
         self._janela.destroy()
         self.janela_anterior.deiconify()
 
-    def criar_conta_corrente(self):
-        cliente_nome = self.combobox_cliente.get()
-        banco_nome = self.combobox_banco.get()
 
-        cliente = None
-        banco = None
 
-        # Procura o objeto Cliente correspondente ao nome selecionado
-        for cli in self.clientes:
-            if cli.nome == cliente_nome:
-                cliente = cli
-                break
 
-        # Procura o objeto Banco correspondente ao nome selecionado
-        for ban in self.bancos:
-            if ban.nome == banco_nome:
-                banco = ban
-                break
-
-        if cliente is None or banco is None:
-            messagebox.showerror("Erro", "Cliente ou banco não encontrado.")
-            return
-
-        conta_corrente = ContaCorrente(cliente, banco)
-        self.contas_cadastradas.append(conta_corrente)
-
-        # Exibe as informações da conta cadastrada na label
-        lbl_conta_cadastrada = tk.Label(self._janela, text=f"Conta Cadastrada:\nCliente: {cliente.nome} | Banco: {banco.nome}")
-        lbl_conta_cadastrada.grid(row=6, columnspan=2)
-
-        messagebox.showinfo("Sucesso", "Conta corrente criada com sucesso!")
-        self.voltar()
+        

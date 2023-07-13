@@ -11,7 +11,7 @@ class CadastrarBanco:
         self._janela = tk.Toplevel(self.janela_anterior)
         self._janela.title("Cadastrar Banco")
         self._janela.geometry('500x500')
-        self.bancos = [] 
+        #self.bancos = [] 
 
         self.lbl_nome = tk.Label(self._janela, text='Nome: ')
         self.lbl_nome.grid(row=0, column=0)
@@ -32,8 +32,12 @@ class CadastrarBanco:
         lbl = tk.Label(self._janela, text=f"ID: {self.banco.numero}\nNome: {self.banco.nome}")
         lbl.grid(row=3, column=1)
         messagebox.showinfo("Sucesso", "Banco cadastrado com sucesso!")
-        self.bancos.append(self.banco)
+        #self.bancos.append(self.banco)  
+        self.banco.mostrarBancos()
 
     def voltar(self):
         self._janela.destroy()
         self.janela_anterior.deiconify()
+
+
+    

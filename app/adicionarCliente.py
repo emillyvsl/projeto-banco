@@ -11,7 +11,7 @@ class AdicionarClientes:
         self._janela = tk.Toplevel(janela_anterior)
         self._janela.title("Adicionar clientes")
         self._janela.geometry('500x500')
-        self.clientes = []  # Lista para armazenar os clientes criados
+        #self.clientes = []  # Lista para armazenar os clientes criados
 
         self.lbl_nome = tk.Label(self._janela, text='Nome:')
         self.lbl_nome.grid(row=0, column=0)
@@ -39,7 +39,7 @@ class AdicionarClientes:
         cpf = self.ent_cpf.get()
         endereco = self.ent_endereco.get()
         cli = Cliente(nome, cpf, endereco)
-        self.clientes.append(cli)  # Adiciona o cliente criado à lista
+        #self.clientes.append(cli)  # Adiciona o cliente criado à lista
         messagebox.showinfo("Sucesso", "Cliente cadastrado com sucesso!")
         lbl_info = tk.Label(self._janela, text=f"ID: {cli.numero}\nNome: {cli.nome}\nCPF: {cli.cpf}\nEndereço: {cli.endereco}")
         lbl_info.grid(row=6, columnspan=2)
