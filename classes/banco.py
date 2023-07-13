@@ -1,12 +1,14 @@
+from historico import Historico
 class Banco:
     _id = 0
-    _bancos = []
 
     def __init__(self, nome):
         self.__num = self.num()
         self.__nome = nome
         self.__contas = []
         self.incluirBancos()
+        self.__jurosBanco = 0.3
+        self.__historico = Historico()
 
     # métodos
     @classmethod
@@ -35,8 +37,16 @@ class Banco:
         self.__contas.append(value)
 
     def incluirBancos(self):
-        Banco._bancos.append(self)
+        self.__historico.listas(self)
 
     @classmethod
-    def mostrarBancos(cls):
-        return [(banco.numero, banco.nome) for banco in cls._bancos]
+    def mostrarBancos(self):
+        return self.__h
+
+    @property
+    def jurosBanco(self):
+        return self.__jurosBanco
+
+    @jurosBanco.setter
+    def jurosBanco(self, value):
+        self.jurosBanco = value

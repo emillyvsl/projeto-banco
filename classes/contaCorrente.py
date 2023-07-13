@@ -1,9 +1,9 @@
 from conta import Conta
 
 class ContaCorrente(Conta):
-    def __init__(self, cli, saldo, desconto, banco=None):
+    def __init__(self, cli, saldo, banco=None):
         super().__init__(cli, saldo, banco)
-        self.__desconto = desconto
+        self.__desconto = 0.5
 
     @property
     def desconto(self):
@@ -11,6 +11,7 @@ class ContaCorrente(Conta):
 
     @desconto.setter
     def desconto(self, value):
+
         self.__desconto = value
 
     def set_depositar(self, valor):
@@ -29,6 +30,8 @@ class ContaCorrente(Conta):
                 self.saldo -= valor
                 return True
             else:
-                return False
+                return "sem saldo"
         else:
             return False
+
+

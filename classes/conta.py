@@ -40,9 +40,14 @@ class Conta:
         if self.status:
             return self.__saldo
 
-    def set_depositar(self, value):
+    @saldo.setter
+    def saldo(self, value):
         if self.status:
             self.__saldo = value
+
+    def set_depositar(self, value):
+        if self.status:
+            self.__saldo += value
         else:
             return False  # Significa que a conta está desativada
 
@@ -67,5 +72,20 @@ class Conta:
 
     @classmethod
     def mostrarContas(cls):
-        # Retorna uma lista dos objetos conta
-        return [i.titular for i in cls._contas]
+        return [conta for conta in cls._contas]
+
+    @property
+    def clientes(self):
+        return self.__titular.mostrarClientes()
+
+    def encerrarConta(self):
+        if self.saldo != 0:  # Se minha conta tiver algum valor, a conta não pode ser encerrada
+            return False
+        else:
+            self.status = False
+            return True
+
+
+
+
+

@@ -1,17 +1,21 @@
+from conta import Conta
 class Cliente:
-    _id=0
+    _id = 0
     _clientes = []
-    def __init__(self, n, e, cpf):
+
+    def __init__(self, n, e, cpf=0):
         self.__num = self.num()
         self.__nome = n
         self.__endereco = e
         self.__CPF = cpf
         self.incluirCliente()
-#Métodos
+        self._status = True
+
     @classmethod
     def num(cls):
         cls._id += 1
         return cls._id
+
     @property
     def numero(self):
         return self.__num
@@ -40,15 +44,26 @@ class Cliente:
     def cpf(self, value):
         self.__CPF = value
 
-
     def incluirCliente(self):
         Cliente._clientes.append(self)
-    @classmethod
-    
+
+    @property
+    def status(self):
+        return self._status
+
+    @status.setter
+    def status(self, value):
+        self._status = value
+
+    # @classmethod
+    # def removerCliente(cls, cliente):
+    #     associado_conta = (cliente in conta.clientes for conta in Conta.mostrarContas())
+    #     print(f"Asssociado {associado_conta}")
+    #     if associado_conta:
+    #         cliente.status = True
+    #     else:
+    #         cliente.status = False
+
     @classmethod
     def mostrarClientes(cls):
-        return cls._clientes
-
-    
-    
-
+        return [i for i in Cliente._clientes if i.status == True]
