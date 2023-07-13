@@ -5,7 +5,7 @@ class AtualizarBanco:
         self.janela_anterior = janela_anterior
         self._janela = tk.Toplevel(janela_anterior)
         self._janela.title("Lista de Bancos")
-        self._janela.geometry('500x500')
+        self._janela.geometry('700x500')
 
         btn = tk.Button(self._janela, text='Voltar', command=self.voltar)
         btn.pack()

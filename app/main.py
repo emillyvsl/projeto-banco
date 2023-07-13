@@ -1,6 +1,8 @@
 import tkinter as tk
 from tkinter import messagebox
 from adicionarCliente import AdicionarClientes
+from app.contaPoupancaI import ContaPoupancaI
+from criarContaP import CriarContaP
 from contaCorrenteI import ContaCorrenteI
 from contaPoupanca import ContaPoupanca
 from criarContaC import CriarContaC
@@ -9,6 +11,11 @@ from mostrarBanco import MostrarBanco
 from atualizarBanco import AtualizarBanco
 from cadastrarBanco import CadastrarBanco
 import sys
+from PIL import Image, ImageTk
+#pode ser necessario instalar para usar a imagem 
+#pip install pillow
+
+
 
 sys.path.insert(0, './')
 sys.path.insert(0, './banco')
@@ -22,6 +29,7 @@ class TelaPrincipal:
         self._janela.title("Sistema Bancário")
         self._janela.geometry('500x500')
 
+        
         self.adicionar_clientes = None  # Inicializa o atributo como None
         self.adicionar_banco = None  # Inicializa o atributo como None
 
@@ -45,7 +53,7 @@ class TelaPrincipal:
         submenu_criar_conta = tk.Menu(mnu_conta)
         mnu_conta.add_cascade(label='Criar Conta', menu=submenu_criar_conta)
         submenu_criar_conta.add_command(label='Conta Corrente', command=self.abrir_criar_contaC)
-        submenu_criar_conta.add_command(label='Conta Poupança')
+        submenu_criar_conta.add_command(label='Conta Poupança', command=self.abrir_criar_contaP)
 
         mnu_conta.add_command(label='Conta Corrente', command=self.abrir_conta_corrente)
         mnu_conta.add_command(label='Conta Poupança', command=self.abrir_conta_poupanca)
@@ -69,7 +77,16 @@ class TelaPrincipal:
     def abrir_criar_contaC(self):
         if self.adicionar_clientes:
             if self.adicionar_banco:
-                CriarContaC(self._janela, Banco._bancos, Cliente._clientes)
+                CriarContaC(self._janela, Banco._lista, Cliente._clientes)
+            else:
+                tk.messagebox.showerror("Erro", "Adicione um banco primeiro.")
+        else:
+            tk.messagebox.showerror("Erro", "Adicione clientes primeiro.")
+
+    def abrir_criar_contaP(self):
+        if self.adicionar_clientes:
+            if self.adicionar_banco:
+                CriarContaP(self._janela, Banco._lista, Cliente._clientes)
             else:
                 tk.messagebox.showerror("Erro", "Adicione um banco primeiro.")
         else:
@@ -79,7 +96,7 @@ class TelaPrincipal:
         ContaCorrenteI(self._janela)
 
     def abrir_conta_poupanca(self):
-        ContaPoupanca(self._janela)
+        ContaPoupancaI(self._janela)
 
 
 def main():

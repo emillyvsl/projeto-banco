@@ -1,19 +1,19 @@
 import tkinter as tk
 from tkinter import ttk
-from contaCorrente import ContaCorrente
-from criarContaC import CriarContaC
 
+from contaPoupanca import ContaPoupanca
 
-class ContaCorrenteI:
+class ContaPoupancaI:
     def mostrarContas(self):
-        lista_contaC = ContaCorrente.mostrarContas()
+        lista_contaC = ContaPoupanca.mostrarContas()
         for contaC in lista_contaC:
             self.treeview.insert('', 'end', values=(contaC.numero, contaC.titular, contaC.banco))
+
 
     def __init__(self, janela_anterior):
         self.janela_anterior = janela_anterior
         self._janela = tk.Toplevel(janela_anterior)
-        self._janela.title("Conta Corrente")
+        self._janela.title("Conta Polpança")
         self._janela.geometry('700x500')
 
         colunas = ('ID', 'Titular', 'Banco')
@@ -72,6 +72,7 @@ class ContaCorrenteI:
         self._janela.grid_rowconfigure(2, weight=1)
         self._janela.grid_columnconfigure(0, weight=1)
 
+        
     def voltar(self):
         self._janela.destroy()
         self.janela_anterior.deiconify()

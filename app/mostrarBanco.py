@@ -19,7 +19,7 @@ class MostrarBanco:
         #self.cadastrar_banco = cadastrar_banco
         self._janela = tk.Toplevel(self.janela_anterior)
         self._janela.title("Lista de Bancos")
-        self._janela.geometry('500x500')
+        self._janela.geometry('700x500')
 
         colunas = ('ID', 'Nome')
 

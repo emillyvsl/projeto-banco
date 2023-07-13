@@ -36,11 +36,12 @@ class Banco:
         self.__contas.append(value)
 
     def incluirBancos(self):
-         Banco._lista.append(self)
+        Banco._lista.append(self)
+         
 
     @classmethod
-    def mostrarBancos(self):
-        return [(banco.numero, banco.nome) for banco in cls._bancos]
+    def mostrarBancos(cls):
+        return [(banco.numero, banco.nome) for banco in cls._lista]
 
     @property
     def jurosBanco(self):

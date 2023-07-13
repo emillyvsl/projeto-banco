@@ -20,7 +20,7 @@ class VerClientes:
         self.janela_anterior = janela_anterior
         self._janela = tk.Toplevel(janela_anterior)
         self._janela.title("Lista de Clientes")
-        self._janela.geometry('800x500')
+        self._janela.geometry('700x500')
 
 
         colunas = ('ID', 'Nome', 'Cpf', 'Endereço')

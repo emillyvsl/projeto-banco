@@ -8,16 +8,17 @@ sys.path.insert(0, './classes')
 
 from classes.cliente import Cliente
 from classes.banco import Banco
-from classes.contaCorrente import ContaCorrente
+from classes.contaPoupanca import ContaPoupanca
 
 
-class CriarContaC:
+class CriarContaP:
     def __init__(self, janela_anterior, clientes, bancos):
         self.janela_anterior = janela_anterior
         self._janela = tk.Toplevel(janela_anterior)
         self._janela.title("Criar Conta Corrente")
         self._janela.geometry('700x500')
         
+
 
         lbl_Cliente = tk.Label(self._janela, text='Escolha um cliente: ')
         lbl_Cliente.grid(row=0, column=0, sticky='w', padx=10, pady=5)
@@ -32,15 +33,15 @@ class CriarContaC:
         self.combobox_banco.grid(row=1, column=1, sticky='e', padx=10, pady=5)
 
         btn_frame = tk.Frame(self._janela)
-        btn_frame.grid(row=2, columnspan=2, padx=10, pady=10)
+        btn_frame.grid(row=4, columnspan=2, padx=10, pady=10)
 
-        btn_cadastrar = tk.Button(btn_frame, text='Cadastrar', command=self.criar_conta_corrente)
+        btn_cadastrar = tk.Button(btn_frame, text='Cadastrar', command=self.criar_conta_poupanca)
         btn_cadastrar.pack(side='left', padx=5)
 
         btn_voltar = tk.Button(btn_frame, text='Voltar', command=self.voltar)
         btn_voltar.pack(side='left', padx=5)
 
-    def criar_conta_corrente(self):
+    def criar_conta_poupanca(self):
         cliente_nome = self.combobox_cliente.get()
         banco_nome = self.combobox_banco.get()
 
@@ -62,12 +63,19 @@ class CriarContaC:
             messagebox.showerror("Erro", "Banco selecionado inválido.")
             return
 
-        contaC = ContaCorrente(cliente_nome, banco_nome)
-        messagebox.showinfo("Sucesso", "Conta corrente cadastrada com sucesso!")
-        lbl_info = tk.Label(self._janela, text=f"ID: {contaC.numero}\nCliente: {contaC.titular}\nBanco: {contaC.banco}")
-        lbl_info.grid(row=3, columnspan=2, padx=10, pady=10)
+        contaP = ContaPoupanca(cliente_nome, banco_selecionado)
+        messagebox.showinfo("Sucesso", "Conta poupança cadastrada com sucesso!")
+        lbl_info = tk.Label(self._janela, text=f"ID: {contaP.numero}\nCliente: {contaP.titular}\nBanco: {contaP.banco}")
+        lbl_info.grid(row=6, columnspan=2)
+
         
+
 
     def voltar(self):
         self._janela.destroy()
         self.janela_anterior.deiconify()
+
+
+
+
+        
