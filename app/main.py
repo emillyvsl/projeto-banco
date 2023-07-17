@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox
 from adicionarCliente import AdicionarClientes
-from app.contaPoupancaI import ContaPoupancaI
+from contaPoupancaI import ContaPoupancaI
 from criarContaP import CriarContaP
 from contaCorrenteI import ContaCorrenteI
 from contaPoupanca import ContaPoupanca
@@ -11,7 +11,7 @@ from mostrarBanco import MostrarBanco
 from atualizarBanco import AtualizarBanco
 from cadastrarBanco import CadastrarBanco
 import sys
-from PIL import Image, ImageTk
+#from PIL import Image, ImageTk
 #pode ser necessario instalar para usar a imagem 
 #pip install pillow
 

@@ -1,14 +1,20 @@
 import tkinter as tk
 from tkinter import ttk
-from contaCorrente import ContaCorrente
+
 from criarContaC import CriarContaC
+import sys
+
+sys.path.insert(0, './')
+sys.path.insert(0, './classes')
+from classes.contaCorrente import ContaCorrente
+
 
 
 class ContaCorrenteI:
     def mostrarContas(self):
         lista_contaC = ContaCorrente.mostrarContas()
         for contaC in lista_contaC:
-            self.treeview.insert('', 'end', values=(contaC.numero, contaC.titular, contaC.banco))
+            self.treeview.insert('', 'end', values=(contaC.numero, contaC.titular, contaC.banco.nome))
 
     def __init__(self, janela_anterior):
         self.janela_anterior = janela_anterior
