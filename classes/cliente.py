@@ -1,6 +1,7 @@
-from conta import Conta
+# from conta import Conta
 # from contaCorrente import ContaCorrente
 # from contaPoupanca import ContaPoupanca
+from historico import Historico
 class Cliente:
     _id = 0
     _clientes = []
@@ -59,7 +60,7 @@ class Cliente:
 
     @classmethod
     def removerCliente(cls, cliente):
-        for i in Conta.mostrarContas():
+        for i in Historico.listar_contas():
             if cliente.numero == i.titular.numero:
                 return False
         cliente.status = False
