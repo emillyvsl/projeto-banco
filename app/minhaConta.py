@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
+from verMinhaConta import VerMinhaConta
 
-from classes.historico import Historico
 
 class MinhaConta:
     def __init__(self, janela_anterior):
@@ -31,8 +31,10 @@ class MinhaConta:
         btn_mostrarConta.pack()
 
     def verConta(self):
-        self.id = self._etr_id.get() 
-        self.conta
+        id = self._etr_id.get() 
+        tipo = self.combobox_cliente.get()
+        VerMinhaConta(self._janela,id,tipo)
+        
     def voltar(self):
         self._janela.destroy()
         self.janela_anterior.deiconify()

@@ -5,22 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="08eb6305-c1ee-48b3-b6dc-42f53a701b63" name="Changes" comment="">
-<<<<<<< HEAD
-      <change beforePath="$PROJECT_DIR$/.idea/Projeto-Banco.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Projeto-Banco.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_13_07_2023_09_42__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_13_07_2023_09_42__Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_18_07_2023_12_32_[Changes]/shelved.patch" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/contaPoupancaI.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/contaPoupancaI.py" afterDir="false" />
-=======
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/contaPoupancaI.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/contaPoupancaI.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/salvarExtrato.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/salvarExtrato.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/contaCorrente.py" beforeDir="false" afterPath="$PROJECT_DIR$/classes/contaCorrente.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/contaPoupanca.py" beforeDir="false" afterPath="$PROJECT_DIR$/classes/contaPoupanca.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/teste.py" beforeDir="false" afterPath="$PROJECT_DIR$/classes/teste.py" afterDir="false" />
->>>>>>> bfaa9647cfe5eb5865c37986709321cfc36b3a81
+      <change beforePath="$PROJECT_DIR$/app/minhaConta.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/minhaConta.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,11 +40,7 @@
     &quot;last_opened_file_path&quot;: &quot;C:/Users/Emilly/Desktop/Trabalho tesi/Projeto-Banco&quot;
   }
 }</component>
-<<<<<<< HEAD
-  <component name="RunManager" selected="Python.main">
-=======
   <component name="RunManager" selected="Python.teste">
->>>>>>> bfaa9647cfe5eb5865c37986709321cfc36b3a81
     <configuration name="cliente" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Projeto-Banco" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -107,10 +90,9 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="C:\Users\sthef\OneDrive\Documentos\GitHub\Projeto-Banco\venv\Scripts\python.exe" />
-      <option name="SDK_NAME" value="Python 3.9 (Projeto-Banco)" />
+      <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/app" />
-      <option name="IS_MODULE_SDK" value="false" />
+      <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/app/main.py" />
@@ -151,10 +133,9 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="C:\Users\sthef\OneDrive\Documentos\GitHub\Projeto-Banco\venv\Scripts\python.exe" />
-      <option name="SDK_NAME" value="Python 3.9 (Projeto-Banco)" />
+      <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/classes" />
-      <option name="IS_MODULE_SDK" value="false" />
+      <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/classes/testes.py" />
@@ -167,27 +148,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.teste" />
       <item itemvalue="Python.cliente" />
       <item itemvalue="Python.historico (1)" />
       <item itemvalue="Python.main" />
+      <item itemvalue="Python.teste" />
       <item itemvalue="Python.testes" />
     </list>
     <recent_temporary>
       <list>
-<<<<<<< HEAD
-        <item itemvalue="Python.main" />
-        <item itemvalue="Python.testes" />
-        <item itemvalue="Python.cliente" />
-        <item itemvalue="Python.historico" />
-        <item itemvalue="Python.conta" />
-=======
         <item itemvalue="Python.teste" />
         <item itemvalue="Python.historico (1)" />
         <item itemvalue="Python.main" />
         <item itemvalue="Python.testes" />
         <item itemvalue="Python.cliente" />
->>>>>>> bfaa9647cfe5eb5865c37986709321cfc36b3a81
       </list>
     </recent_temporary>
   </component>
