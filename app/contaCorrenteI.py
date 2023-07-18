@@ -51,10 +51,10 @@ class ContaCorrenteI:
         btn_frame = tk.Frame(self._janela)
         btn_frame.grid(row=1, column=0, padx=10, pady=10, sticky='nsew')
 
-        btn_depositar = tk.Button(btn_frame, text='Depositar')
+        btn_depositar = tk.Button(btn_frame, text='Depositar', command=self.depositar)
         btn_depositar.pack(side='left', padx=5, pady=5, expand=True)
 
-        btn_sacar = tk.Button(btn_frame, text='Sacar')
+        btn_sacar = tk.Button(btn_frame, text='Sacar', command=self.sacar)
         btn_sacar.pack(side='left', padx=5, pady=5, expand=True)
 
         btn_listar = tk.Button(btn_frame, text='Listar Contas', command=self.mostrarContas)
@@ -81,3 +81,31 @@ class ContaCorrenteI:
     def voltar(self):
         self._janela.destroy()
         self.janela_anterior.deiconify()
+
+    def depositar(self):
+        # Obter o item selecionado na treeview
+        item_selecionado = self.treeview.focus()
+        if item_selecionado:
+            valores = self.treeview.item(item_selecionado)['values']
+            numero_conta = valores[0]
+            # Obter a instância da conta correspondente ao número da conta
+            conta = ContaCorrente.obterContaPorNumero(numero_conta)
+            if conta:
+                # Exemplo de depósito de R$100 na conta
+                conta.set_depositar(100)
+                # Atualizar a treeview
+                self.mostrarContas()
+
+    def sacar(self):
+        # Obter o item selecionado na treeview
+        item_selecionado = self.treeview.focus()
+        if item_selecionado:
+            valores = self.treeview.item(item_selecionado)['values']
+            numero_conta = valores[0]
+            # Obter a instância da conta correspondente ao número da conta
+            conta = ContaCorrente.obterContaPorNumero(numero_conta)
+            if conta:
+                # Exemplo de saque de R$50 da conta
+                conta.set_sacar(50)
+                # Atualizar a treeview
+                self.mostrarContas()

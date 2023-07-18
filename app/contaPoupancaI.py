@@ -1,7 +1,11 @@
 import tkinter as tk
 from tkinter import ttk
 
-from contaPoupanca import ContaPoupanca
+import sys
+
+sys.path.insert(0, './')
+sys.path.insert(0, './classes')
+from classes.contaPoupanca import ContaPoupanca
 
 class ContaPoupancaI:
     def mostrarContas(self):
