@@ -1,7 +1,11 @@
 import tkinter as tk
 from tkinter import ttk
 
-from contaPoupanca import ContaPoupanca
+import sys
+
+sys.path.insert(0, './')
+sys.path.insert(0, './classes')
+from classes.contaPoupanca import ContaPoupanca
 
 class ContaPoupancaI:
     def mostrarContas(self):
@@ -13,7 +17,7 @@ class ContaPoupancaI:
     def __init__(self, janela_anterior):
         self.janela_anterior = janela_anterior
         self._janela = tk.Toplevel(janela_anterior)
-        self._janela.title("Conta Polpança")
+        self._janela.title("Conta Poupança")
         self._janela.geometry('700x500')
 
         colunas = ('ID', 'Titular', 'Banco')
