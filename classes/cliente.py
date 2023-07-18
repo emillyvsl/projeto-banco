@@ -69,4 +69,4 @@ class Cliente:
 
     @classmethod
     def mostrarClientes(cls):
-        return [i for i in Cliente._clientes if i.status == True]
+        return [i for i in Cliente._clientes if i.status == True]#so ira retornar as contas ativadas

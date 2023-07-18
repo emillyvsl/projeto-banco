@@ -1,9 +1,14 @@
 from conta import Conta
+import datetime
+
+x = datetime.datetime.now()
+
+
 
 class ContaCorrente(Conta):
     def __init__(self, cli, saldo, banco=None):
         super().__init__(cli, saldo, banco)
-        self.__desconto = 0.5
+        self.__desconto = 0.05
 
     @property
     def desconto(self):
@@ -19,6 +24,7 @@ class ContaCorrente(Conta):
         valor -= desconto
         if self.status:
             self.saldo = valor
+            self._historico.incluir(f'Deposito de {valor},data/hora:{x}')
         else:
             return False  # Significa que a conta está desativada
 
@@ -28,10 +34,9 @@ class ContaCorrente(Conta):
         if self.status:
             if valor <= self.saldo:
                 self.saldo -= valor
+                self._historico.incluir(f'Saque de {valor}, data/hora:{x}')
                 return True
             else:
                 return "sem saldo"
         else:
             return False
-
-

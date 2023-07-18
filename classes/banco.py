@@ -45,7 +45,7 @@ class Banco:
 
     @property
     def jurosBanco(self):
-        return self.__jurosBanco
+        return int(self.__jurosBanco)
 
     @jurosBanco.setter
     def jurosBanco(self, value):

@@ -1,4 +1,6 @@
+import datetime
 from historico import Historico
+x = datetime.datetime.now()
 class Conta:
     _id = 0
     _contas = []
@@ -11,6 +13,7 @@ class Conta:
         self._status = True
         self.incluirConta()
         Historico.adicionar_conta(self)
+        self._historico = Historico()
 
 
     @classmethod
@@ -41,6 +44,7 @@ class Conta:
     @property
     def saldo(self):
         if self.status:
+            self._historico.incluir(f'Saldo atual:{self.__saldo} dia:{x}')
             return self.__saldo
 
     @saldo.setter
@@ -48,21 +52,32 @@ class Conta:
         if self.status:
             self.__saldo = value
 
-    def set_depositar(self, value):
+    def set_depositar(self, valor):
         if self.status:
-            self.__saldo += value
+            self.saldo = valor
+            self._historico.incluir(f'Deposito de {valor},data/hora:{x}')
         else:
             return False  # Significa que a conta está desativada
 
-    def set_sacar(self, value):
+    # def set_sacar(self, value):
+    #     if self.status:
+    #         if value <= self.saldo:
+    #             self.__saldo -= value
+    #             return True  # Se o saque for bem-sucedido, retorna verdadeiro
+    #         else:
+    #             return False  # Se for falso, significa que não há saldo suficiente
+    #     else:
+    #         return False  # Significa que a conta não está ativa
+    def set_sacar(self, valor):
         if self.status:
-            if value <= self.saldo:
-                self.__saldo -= value
-                return True  # Se o saque for bem-sucedido, retorna verdadeiro
+            if valor <= self.saldo:
+                self.saldo -= valor
+                self._historico.incluir(f'Saque de {valor},data/hora:{x}')
+                return True
             else:
-                return False  # Se for falso, significa que não há saldo suficiente
+                return "sem saldo" # se esse for o retorno significa que não ha saldo suficiente
         else:
-            return False  # Significa que a conta não está ativa
+            return False
 
     @property
     def banco(self):
@@ -86,7 +101,10 @@ class Conta:
             return False
         else:
             self.status = False
+            self._hitorico.incluir(f'Conta do(a) senhor(a) {self.titular.nome},foi encerrada dia/hora:{x}')
             return True
+    def extrato(self):
+        return self._historico.mostrar()
 
 
 
