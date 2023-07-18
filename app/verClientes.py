@@ -62,7 +62,7 @@ class VerClientes:
         btn_incluir.grid(row=5, column=2)
 
         # btn_pesq = tk.Button(frame_btn, text='Pesquisar')
-        # btn_pesq.grid(row=5, column=3)
+        # btn_pesq.grid(row=5, column=3) #nao vai ser usado
 
         btn = tk.Button(frame_btn, text='Voltar', command=self.voltar)
         btn.grid(row=5, column=3)
