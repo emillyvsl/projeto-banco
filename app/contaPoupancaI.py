@@ -13,7 +13,7 @@ class ContaPoupancaI:
     def __init__(self, janela_anterior):
         self.janela_anterior = janela_anterior
         self._janela = tk.Toplevel(janela_anterior)
-        self._janela.title("Conta Polpança")
+        self._janela.title("Conta Poupança")
         self._janela.geometry('700x500')
 
         colunas = ('ID', 'Titular', 'Banco')

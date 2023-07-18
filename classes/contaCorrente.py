@@ -3,12 +3,12 @@ import datetime
 
 x = datetime.datetime.now()
 
-
-
 class ContaCorrente(Conta):
+    _contaC = []
     def __init__(self, cli, saldo, banco=None):
         super().__init__(cli, saldo, banco)
         self.__desconto = 0.05
+        self.addContaC()
 
     @property
     def desconto(self):
@@ -40,3 +40,10 @@ class ContaCorrente(Conta):
                 return "sem saldo"
         else:
             return False
+        
+    def addContaC(self):
+        self._contaC.append(self)
+
+    @classmethod
+    def mostrarContasC(cls):
+        return [conta for conta in cls._contaC]
