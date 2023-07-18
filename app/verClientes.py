@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter import messagebox
 import sys
+from adicionarCliente import AdicionarClientes
 from editarCliente import EditarCliente
 sys.path.insert(0, './')
 sys.path.insert(0, './classes')
@@ -57,14 +58,14 @@ class VerClientes:
         btn_excluir = tk.Button(frame_btn, text='Excluir', command=self.excluir_cliente)
         btn_excluir.grid(row=5, column=1)
 
-        btn_incluir = tk.Button(frame_btn, text='Incluir')
+        btn_incluir = tk.Button(frame_btn, text='Incluir', command=self.incluir_cliente)
         btn_incluir.grid(row=5, column=2)
 
-        btn_pesq = tk.Button(frame_btn, text='Pesquisar')
-        btn_pesq.grid(row=5, column=3)
+        # btn_pesq = tk.Button(frame_btn, text='Pesquisar')
+        # btn_pesq.grid(row=5, column=3)
 
         btn = tk.Button(frame_btn, text='Voltar', command=self.voltar)
-        btn.grid(row=5, column=4)
+        btn.grid(row=5, column=3)
 
     def editar_cliente(self):
         # Obter o item selecionado na treeview
@@ -105,6 +106,11 @@ class VerClientes:
                     messagebox.showerror("Erro", "Não foi possível excluir o cliente. Verifique se existem contas vinculadas a ele.")
             else:
                 messagebox.showerror("Erro", "Cliente não encontrado.")
+
+    def incluir_cliente(self):
+        AdicionarClientes(self._janela)
+
+            
 
     def voltar(self):
         self._janela.destroy()
