@@ -14,7 +14,9 @@ class ContaCorrenteI:
     def mostrarContas(self):
         lista_contaC = ContaCorrente.mostrarContasC()
         for contaC in lista_contaC:
-            self.treeview.insert('', 'end', values=(contaC.numero, contaC.titular, contaC.banco.nome))
+            nome_banco = contaC.banco.nome if contaC.banco else "Banco não definido"
+            self.treeview.insert('', 'end', values=(contaC.numero, contaC.titular, nome_banco))
+
 
     def __init__(self, janela_anterior):
         self.janela_anterior = janela_anterior
