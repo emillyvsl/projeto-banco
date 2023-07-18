@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox
 from adicionarCliente import AdicionarClientes
+from minhaConta import MinhaConta
 from contaPoupancaI import ContaPoupancaI
 from criarContaP import CriarContaP
 from contaCorrenteI import ContaCorrenteI
@@ -57,6 +58,7 @@ class TelaPrincipal:
 
         mnu_conta.add_command(label='Conta Corrente', command=self.abrir_conta_corrente)
         mnu_conta.add_command(label='Conta Poupança', command=self.abrir_conta_poupanca)
+        mnu_conta.add_command(label='Minha conta',command=self.contas)
 
     # Funções para abrir as janelas
     def abrir_cadastrar_banco(self):
@@ -97,6 +99,10 @@ class TelaPrincipal:
 
     def abrir_conta_poupanca(self):
         ContaPoupancaI(self._janela)
+
+    def contas(self):
+        MinhaConta(self._janela)
+
 
 
 def main():
