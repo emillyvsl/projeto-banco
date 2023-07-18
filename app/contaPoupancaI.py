@@ -9,7 +9,7 @@ from classes.contaPoupanca import ContaPoupanca
 
 class ContaPoupancaI:
     def mostrarContas(self):
-        lista_contaC = ContaPoupanca.mostrarContas()
+        lista_contaC = ContaPoupanca.mostrarContasP()
         for contaC in lista_contaC:
             self.treeview.insert('', 'end', values=(contaC.numero, contaC.titular, contaC.banco))
 

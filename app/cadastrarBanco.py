@@ -34,7 +34,8 @@ class CadastrarBanco:
         lbl = tk.Label(self._janela, text=f"ID: {self.banco.numero}\nNome: {self.banco.nome}")
         lbl.grid(row=3, column=1, padx=10, pady=10)
         messagebox.showinfo("Sucesso", "Banco cadastrado com sucesso!")
-        self.banco.mostrarBancos()
+        self._janela.destroy()  # Fecha a janela de cadastro
+        self.janela_anterior.deiconify()  # Exibe a janela anterior
 
     def voltar(self):
         self._janela.destroy()

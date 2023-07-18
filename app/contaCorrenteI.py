@@ -12,7 +12,7 @@ from classes.contaCorrente import ContaCorrente
 
 class ContaCorrenteI:
     def mostrarContas(self):
-        lista_contaC = ContaCorrente.mostrarContas()
+        lista_contaC = ContaCorrente.mostrarContasC()
         for contaC in lista_contaC:
             self.treeview.insert('', 'end', values=(contaC.numero, contaC.titular, contaC.banco.nome))
 
