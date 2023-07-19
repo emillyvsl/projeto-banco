@@ -1,7 +1,6 @@
 import tkinter as tk
 from tkinter import messagebox
 from adicionarCliente import AdicionarClientes
-from minhaConta import MinhaConta
 from contaPoupancaI import ContaPoupancaI
 from criarContaP import CriarContaP
 from contaCorrenteI import ContaCorrenteI
@@ -9,7 +8,6 @@ from contaPoupanca import ContaPoupanca
 from criarContaC import CriarContaC
 from verClientes import VerClientes
 from mostrarBanco import MostrarBanco
-from atualizarBanco import AtualizarBanco
 from cadastrarBanco import CadastrarBanco
 import sys
 from tkinter import ttk
@@ -42,7 +40,6 @@ class TelaPrincipal:
         mnu_barra.add_cascade(label='Banco', menu=mnu_banco)
         mnu_banco.add_command(label='Cadastrar banco', command=self.abrir_cadastrar_banco)
         mnu_banco.add_command(label='Mostrar bancos', command=self.abrir_mostrar_banco)
-        mnu_banco.add_command(label='Atualizar informações', command=self.abrir_atualizar_banco)
 
         mnu_cliente = tk.Menu(mnu_barra)
         mnu_barra.add_cascade(label='Cliente', menu=mnu_cliente)
@@ -59,7 +56,7 @@ class TelaPrincipal:
 
         mnu_conta.add_command(label='Conta Corrente', command=self.abrir_conta_corrente)
         mnu_conta.add_command(label='Conta Poupança', command=self.abrir_conta_poupanca)
-        mnu_conta.add_command(label='Minha conta',command=self.contas)
+
     
         # Carregar e exibir a imagem
         imagem = Image.open(r"C:\Users\sthef\OneDrive\Documentos\GitHub\Projeto-Banco\app\banco.png")
@@ -76,9 +73,6 @@ class TelaPrincipal:
     # Funções para abrir as janelas
     def abrir_cadastrar_banco(self):
         self.adicionar_banco = CadastrarBanco(self._janela)
-
-    def abrir_atualizar_banco(self):
-        AtualizarBanco(self._janela)
 
     def abrir_mostrar_banco(self):
         MostrarBanco(self._janela)
@@ -112,9 +106,6 @@ class TelaPrincipal:
 
     def abrir_conta_poupanca(self):
         ContaPoupancaI(self._janela, Banco.mostrarBancos())
-
-    def contas(self):
-        MinhaConta(self._janela)
 
 
 

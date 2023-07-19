@@ -1,7 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
-from banco import Banco
-from cliente import Cliente
+from tkinter import filedialog
 
 from criarContaC import CriarContaC
 import sys
@@ -16,7 +15,7 @@ class ContaCorrenteI:
     def mostrarContas(self):
         lista_contaC = ContaCorrente.mostrarContasC()
         for contaC in lista_contaC:
-            self.treeview.insert('', 'end', values=(contaC.numero, contaC.titular, contaC.banco))
+            self.treeview.insert('', 'end', values=(contaC.numero, contaC.titular, contaC.banco.nome))
 
 
     def __init__(self, janela_anterior):
@@ -72,11 +71,11 @@ class ContaCorrenteI:
         btn_excluir = tk.Button(btn_frame, text='Excluir')
         btn_excluir.pack(side='left', padx=5, pady=5, expand=True)
 
-        btn_excluir = tk.Button(btn_frame, text='Extrato')
-        btn_excluir.pack(side='left', padx=5, pady=5, expand=True)
-
         btn_voltar = tk.Button(btn_frame, text='Voltar', command=self.voltar)
         btn_voltar.pack(side='left', padx=5, pady=5, expand=True)
+
+        btn_historico = tk.Button(btn_frame, text='Extrato', command=self.historico)
+        btn_historico.pack(side='left', padx=5, pady=5, expand=True)
 
         # Configurar redimensionamento responsivo para botões
         btn_frame.grid_columnconfigure(0, weight=1)
@@ -88,32 +87,49 @@ class ContaCorrenteI:
         self._janela.destroy()
         self.janela_anterior.deiconify()
 
-  
-
     def depositar(self):
-        # Obter o item selecionado na treeview
         item_selecionado = self.treeview.focus()
         if item_selecionado:
             valores = self.treeview.item(item_selecionado)['values']
-            numero_conta = valores[0]
-            # Obter a instância da conta correspondente ao número da conta
-            conta = ContaCorrente.obterContaPorNumero(numero_conta)
-            if conta:
+            numero_cliente = valores[0]
+            conta_encontrada = None
+            for cliente in ContaCorrente.mostrarContasC():
+                if cliente.numero == numero_cliente:
+                    conta_encontrada = cliente
+                    break
+            if conta_encontrada:
                 # Exemplo de depósito de R$100 na conta
-                conta.set_depositar(100)
+                conta_encontrada.set_depositar(100)
                 # Atualizar a treeview
-                self.mostrarContas()
 
     def sacar(self):
-        # Obter o item selecionado na treeview
         item_selecionado = self.treeview.focus()
         if item_selecionado:
             valores = self.treeview.item(item_selecionado)['values']
-            numero_conta = valores[0]
-            # Obter a instância da conta correspondente ao número da conta
-            conta = ContaCorrente.obterContaPorNumero(numero_conta)
-            if conta:
+            numero_cliente = valores[0]
+            conta_encontrado = None
+            for cliente in ContaCorrente.mostrarContasC():
+                if cliente.numero == numero_cliente:
+                    conta_encontrado = cliente
+                    break
+            if conta_encontrado:
                 # Exemplo de saque de R$50 da conta
-                conta.set_sacar(50)
-                # Atualizar a treeview
-                self.mostrarContas()
+                conta_encontrado.set_sacar(50)
+
+    def historico(self):
+        item_selecionado = self.treeview.focus()
+        if item_selecionado:
+            valores = self.treeview.item(item_selecionado)['values']
+            numero_cliente = valores[0]
+            cliente_encontrado = None
+            for cliente in ContaCorrente.mostrarContasC():
+                if cliente.numero == numero_cliente:
+                    cliente_encontrado = cliente
+                    break
+            lista_informacoes = cliente_encontrado.extrato()
+            arquivo = filedialog.asksaveasfile(defaultextension=".txt")
+            for item in lista_informacoes:
+                arquivo.write(item + "\n")
+    
+            # Fecha o arquivo
+            arquivo.close()
