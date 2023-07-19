@@ -37,15 +37,47 @@ class AdicionarClientes:
         btn_voltar.pack(side='left', padx=5)
 
     def adicionarCliente(self):
-        nome = self.ent_nome.get()
-        cpf = self.ent_cpf.get()
-        endereco = self.ent_endereco.get()
-        cli = Cliente(nome, cpf, endereco)
-        messagebox.showinfo("Sucesso", "Cliente cadastrado com sucesso!")
-        self._janela.destroy()  # Fecha a janela de cadastro
-        self.janela_anterior.deiconify()  # Exibe a janela anterior
+        if self.validar_cpf(self.ent_cpf.get()):
+            nome = self.ent_nome.get()
+            cpf = self.ent_cpf.get()
+            endereco = self.ent_endereco.get()
+            cli = Cliente(nome, cpf, endereco)
+            messagebox.showinfo("Sucesso", "Cliente cadastrado com sucesso!")
+            self._janela.destroy()  # Fecha a janela de cadastro
+            self.janela_anterior.deiconify()  # Exibe a janela anterior
+        else:
+            messagebox.showinfo("CPF invalido", "Insira um CPF valido!Seu CPF deves estar no seguinte formato:XXX.XXX.XXX-XX")
         
+    def validar_cpf(self, cpf):
+        # Remover caracteres especiais e espaços em branco
+        cpf = ''.join(filter(str.isdigit, cpf))
+
+        # Verificar se o CPF tem 11 dígitos
+        if len(cpf) != 11:
+            return False
+
+        # Verificar se todos os dígitos são iguais
+        if cpf == cpf[0] * 11:
+            return False
+
+        # Verificar dígito verificador
+        soma1 = sum(int(cpf[i]) * (10 - i) for i in range(9))
+        digito1 = (soma1 * 10) % 11
+        if digito1 == 10:
+            digito1 = 0
+        if digito1 != int(cpf[9]):
+            return False
+
+        soma2 = sum(int(cpf[i]) * (11 - i) for i in range(10))
+        digito2 = (soma2 * 10) % 11
+        if digito2 == 10:
+            digito2 = 0
+        if digito2 != int(cpf[10]):
+            return False
+
+        return True
 
     def voltar(self):
         self._janela.destroy()
         self.janela_anterior.deiconify()
+

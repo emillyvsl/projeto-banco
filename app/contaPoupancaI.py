@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import ttk
 
 import sys
+from app.mostrarExtrato import MostrarExtrato
 
 from cliente import Cliente
 
@@ -53,10 +54,10 @@ class ContaPoupancaI:
         btn_frame = tk.Frame(self._janela)
         btn_frame.grid(row=1, column=0, padx=10, pady=10, sticky='nsew')
 
-        btn_depositar = tk.Button(btn_frame, text='Depositar')
+        btn_depositar = tk.Button(btn_frame, text='Depositar',command=self.depositar)
         btn_depositar.pack(side='left', padx=5, pady=5, expand=True)
 
-        btn_sacar = tk.Button(btn_frame, text='Sacar')
+        btn_sacar = tk.Button(btn_frame, text='Sacar',command=self.sacar)
         btn_sacar.pack(side='left', padx=5, pady=5, expand=True)
 
         btn_listar = tk.Button(btn_frame, text='Listar Contas', command=self.mostrarContas)
@@ -74,6 +75,9 @@ class ContaPoupancaI:
         btn_voltar = tk.Button(btn_frame, text='Voltar', command=self.voltar)
         btn_voltar.pack(side='left', padx=5, pady=5, expand=True)
 
+        btn_historico = tk.Button(btn_frame, text='Extrato', command=self.historico)
+        btn_historico.pack(side='left', padx=5, pady=5, expand=True)
+
         # Configurar redimensionamento responsivo para botões
         btn_frame.grid_columnconfigure(0, weight=1)
 
@@ -87,3 +91,45 @@ class ContaPoupancaI:
     def voltar(self):
         self._janela.destroy()
         self.janela_anterior.deiconify()
+    def historico(self):
+        item_selecionado = self.treeview.focus()
+        if item_selecionado:
+            valores = self.treeview.item(item_selecionado)['values']
+            numero_cliente = valores[0]
+            cliente_encontrado = None
+            for cliente in ContaPoupanca.mostrarContasP():
+                if cliente.numero == numero_cliente:
+                    cliente_encontrado = cliente
+                    break
+            MostrarExtrato(self._janela,cliente_encontrado)
+        
+    def depositar(self):
+        item_selecionado = self.treeview.focus()
+        if item_selecionado:
+            valores = self.treeview.item(item_selecionado)['values']
+            numero_cliente = valores[0]
+            conta_encontrada = None
+            for cliente in ContaPoupanca.mostrarContasP():
+                if cliente.numero == numero_cliente:
+                    conta_encontrada = cliente
+                    break
+            if conta_encontrada:
+                # Exemplo de depósito de R$100 na conta
+                conta_encontrada.set_depositar(100)
+                # Atualizar a treeview
+
+    def sacar(self):
+        item_selecionado = self.treeview.focus()
+        if item_selecionado:
+            valores = self.treeview.item(item_selecionado)['values']
+            numero_cliente = valores[0]
+            conta_encontrado = None
+            for cliente in ContaPoupanca.mostrarContasP():
+                if cliente.numero == numero_cliente:
+                    conta_encontrado = cliente
+                    break
+            if conta_encontrado:
+                # Exemplo de saque de R$50 da conta
+                conta_encontrado.set_sacar(50)
+
+            

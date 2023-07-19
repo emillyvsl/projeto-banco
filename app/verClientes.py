@@ -14,7 +14,7 @@ class VerClientes:
     def mostrarClientes(self):
         lista_cliente = Cliente.mostrarClientes()
         for cliente in lista_cliente:
-            self.treeview.insert('', 'end', values=(cliente.numero, cliente.nome, cliente.cpf, cliente.endereco))
+            self.treeview.insert('', 'end', values=(cliente.numero, cliente.nome, cliente.endereco, cliente.cpf))
 
     def __init__(self, janela_anterior):
         self.janela_anterior = janela_anterior
