@@ -44,8 +44,6 @@ class AdicionarClientes:
         messagebox.showinfo("Sucesso", "Cliente cadastrado com sucesso!")
         self._janela.destroy()  # Fecha a janela de cadastro
         self.janela_anterior.deiconify()  # Exibe a janela anterior
-        lbl_info = tk.Label(self._janela, text=f"ID: {cli.numero}\nNome: {cli.nome}\nCPF: {cli.cpf}\nEndereço: {cli.endereco}")
-        lbl_info.grid(row=6, columnspan=2, padx=10, pady=10)
 
     def voltar(self):
         self._janela.destroy()
