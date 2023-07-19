@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 from tkinter import filedialog
+from app.mostrarExtrato import MostrarExtrato
 
 from criarContaC import CriarContaC
 import sys
@@ -127,10 +128,5 @@ class ContaCorrenteI:
                 if cliente.numero == numero_cliente:
                     cliente_encontrado = cliente
                     break
-            lista_informacoes = cliente_encontrado.extrato()
-            arquivo = filedialog.asksaveasfile(defaultextension=".txt")
-            for item in lista_informacoes:
-                arquivo.write(item + "\n")
-    
-            # Fecha o arquivo
-            arquivo.close()
+            MostrarExtrato(self._janela,cliente_encontrado)
+            
