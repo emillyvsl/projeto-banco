@@ -3,9 +3,13 @@ from tkinter import ttk
 
 import sys
 
+from cliente import Cliente
+
 sys.path.insert(0, './')
 sys.path.insert(0, './classes')
 from classes.contaPoupanca import ContaPoupanca
+from criarContaP import CriarContaP
+from classes.banco import Banco  # Importe a classe Banco
 
 class ContaPoupancaI:
     def mostrarContas(self):
@@ -14,7 +18,7 @@ class ContaPoupancaI:
             self.treeview.insert('', 'end', values=(contaC.numero, contaC.titular, contaC.banco.nome))
 
 
-    def __init__(self, janela_anterior):
+    def __init__(self, janela_anterior, bancos):  # Adicione o argumento bancos
         self.janela_anterior = janela_anterior
         self._janela = tk.Toplevel(janela_anterior)
         self._janela.title("Conta Poupança")
@@ -61,7 +65,7 @@ class ContaPoupancaI:
         btn_editar = tk.Button(btn_frame, text='Editar')
         btn_editar.pack(side='left', padx=5, pady=5, expand=True)
 
-        btn_incluir = tk.Button(btn_frame, text='Incluir')
+        btn_incluir = tk.Button(btn_frame, text='Incluir', command=self.incluir)
         btn_incluir.pack(side='left', padx=5, pady=5, expand=True)
 
         btn_excluir = tk.Button(btn_frame, text='Excluir')
@@ -76,7 +80,10 @@ class ContaPoupancaI:
         self._janela.grid_rowconfigure(2, weight=1)
         self._janela.grid_columnconfigure(0, weight=1)
 
-        
+
+    def incluir(self):
+        CriarContaP(self._janela, Cliente.mostrarClientes(), Banco.mostrarBancos())  
+
     def voltar(self):
         self._janela.destroy()
         self.janela_anterior.deiconify()

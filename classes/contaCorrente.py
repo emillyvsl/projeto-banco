@@ -5,7 +5,7 @@ x = datetime.datetime.now()
 
 class ContaCorrente(Conta):
     _contaC = []
-    def __init__(self, cli, saldo, banco=None):
+    def __init__(self, cli, banco, saldo=0):
         super().__init__(cli, saldo, banco)
         self.__desconto = 0.05
         self.addContaC()

@@ -1,5 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
+from banco import Banco
+from cliente import Cliente
 
 from criarContaC import CriarContaC
 import sys
@@ -14,7 +16,7 @@ class ContaCorrenteI:
     def mostrarContas(self):
         lista_contaC = ContaCorrente.mostrarContasC()
         for contaC in lista_contaC:
-            self.treeview.insert('', 'end', values=(contaC.numero, contaC.titular, contaC.banco.nome))
+            self.treeview.insert('', 'end', values=(contaC.numero, contaC.titular, contaC.banco))
 
 
     def __init__(self, janela_anterior):
@@ -70,6 +72,9 @@ class ContaCorrenteI:
         btn_excluir = tk.Button(btn_frame, text='Excluir')
         btn_excluir.pack(side='left', padx=5, pady=5, expand=True)
 
+        btn_excluir = tk.Button(btn_frame, text='Extrato')
+        btn_excluir.pack(side='left', padx=5, pady=5, expand=True)
+
         btn_voltar = tk.Button(btn_frame, text='Voltar', command=self.voltar)
         btn_voltar.pack(side='left', padx=5, pady=5, expand=True)
 
@@ -82,6 +87,8 @@ class ContaCorrenteI:
     def voltar(self):
         self._janela.destroy()
         self.janela_anterior.deiconify()
+
+  
 
     def depositar(self):
         # Obter o item selecionado na treeview

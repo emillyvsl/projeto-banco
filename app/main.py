@@ -62,7 +62,7 @@ class TelaPrincipal:
         mnu_conta.add_command(label='Minha conta',command=self.contas)
     
         # Carregar e exibir a imagem
-        imagem = Image.open(r"C:\Users\Emilly\Desktop\Trabalho tesi\Projeto-Banco\app\banco.png")
+        imagem = Image.open(r"C:\Users\sthef\OneDrive\Documentos\GitHub\Projeto-Banco\app\banco.png")
 
         imagem = imagem.resize((300, 300))  # Redimensionar a imagem conforme necessário
         self.minha_imagem = ImageTk.PhotoImage(imagem)
@@ -111,7 +111,7 @@ class TelaPrincipal:
         ContaCorrenteI(self._janela)
 
     def abrir_conta_poupanca(self):
-        ContaPoupancaI(self._janela)
+        ContaPoupancaI(self._janela, Banco.mostrarBancos())
 
     def contas(self):
         MinhaConta(self._janela)
