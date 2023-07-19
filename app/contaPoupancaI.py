@@ -11,7 +11,7 @@ class ContaPoupancaI:
     def mostrarContas(self):
         lista_contaC = ContaPoupanca.mostrarContasP()
         for contaC in lista_contaC:
-            self.treeview.insert('', 'end', values=(contaC.numero, contaC.titular, contaC.banco))
+            self.treeview.insert('', 'end', values=(contaC.numero, contaC.titular, contaC.banco.nome))
 
 
     def __init__(self, janela_anterior):
