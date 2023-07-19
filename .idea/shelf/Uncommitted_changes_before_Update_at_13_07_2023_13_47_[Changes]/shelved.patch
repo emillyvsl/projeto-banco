@@ -1,0 +1,313 @@
+Index: classes/contaPoupanca.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/classes/contaPoupanca.py b/classes/contaPoupanca.py
+new file mode 100644
+--- /dev/null	(date 1688589917455)
++++ b/classes/contaPoupanca.py	(date 1688589917455)
+@@ -0,0 +1,5 @@
++from conta import Conta
++
++class contaPoupanca(Conta):
++    def __init__(self, cli, sal=0,banco=None):
++        super().__init__(self, cli, sal,banco)
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"08eb6305-c1ee-48b3-b6dc-42f53a701b63\" name=\"Changes\" comment=\"\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/misc.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/misc.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/app/mostrarBanco.py\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/app/mostrarBanco.py\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/classes/cliente.py\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/classes/cliente.py\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/classes/conta.py\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/classes/conta.py\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2RqAJoS9oxFtqxA1Hvs5IsbwNIn\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"git-widget-placeholder\": \"main\",\r\n    \"last_opened_file_path\": \"C:/Users/Emilly/Desktop/Trabalho tesi/Projeto-Banco\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RunManager\" selected=\"Python.conta\">\r\n    <configuration name=\"cliente\" type=\"PythonConfigurationType\" factoryName=\"Python\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"Projeto-Banco\" />\r\n      <option name=\"INTERPRETER_OPTIONS\" value=\"\" />\r\n      <option name=\"PARENT_ENVS\" value=\"true\" />\r\n      <envs>\r\n        <env name=\"PYTHONUNBUFFERED\" value=\"1\" />\r\n      </envs>\r\n      <option name=\"SDK_HOME\" value=\"\" />\r\n      <option name=\"WORKING_DIRECTORY\" value=\"$PROJECT_DIR$/classes\" />\r\n      <option name=\"IS_MODULE_SDK\" value=\"true\" />\r\n      <option name=\"ADD_CONTENT_ROOTS\" value=\"true\" />\r\n      <option name=\"ADD_SOURCE_ROOTS\" value=\"true\" />\r\n      <option name=\"SCRIPT_NAME\" value=\"$PROJECT_DIR$/classes/cliente.py\" />\r\n      <option name=\"PARAMETERS\" value=\"\" />\r\n      <option name=\"SHOW_COMMAND_LINE\" value=\"false\" />\r\n      <option name=\"EMULATE_TERMINAL\" value=\"false\" />\r\n      <option name=\"MODULE_MODE\" value=\"false\" />\r\n      <option name=\"REDIRECT_INPUT\" value=\"false\" />\r\n      <option name=\"INPUT_FILE\" value=\"\" />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <configuration name=\"conta\" type=\"PythonConfigurationType\" factoryName=\"Python\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"Projeto-Banco\" />\r\n      <option name=\"INTERPRETER_OPTIONS\" value=\"\" />\r\n      <option name=\"PARENT_ENVS\" value=\"true\" />\r\n      <envs>\r\n        <env name=\"PYTHONUNBUFFERED\" value=\"1\" />\r\n      </envs>\r\n      <option name=\"SDK_HOME\" value=\"\" />\r\n      <option name=\"WORKING_DIRECTORY\" value=\"$PROJECT_DIR$/classes\" />\r\n      <option name=\"IS_MODULE_SDK\" value=\"true\" />\r\n      <option name=\"ADD_CONTENT_ROOTS\" value=\"true\" />\r\n      <option name=\"ADD_SOURCE_ROOTS\" value=\"true\" />\r\n      <option name=\"SCRIPT_NAME\" value=\"$PROJECT_DIR$/classes/conta.py\" />\r\n      <option name=\"PARAMETERS\" value=\"\" />\r\n      <option name=\"SHOW_COMMAND_LINE\" value=\"false\" />\r\n      <option name=\"EMULATE_TERMINAL\" value=\"false\" />\r\n      <option name=\"MODULE_MODE\" value=\"false\" />\r\n      <option name=\"REDIRECT_INPUT\" value=\"false\" />\r\n      <option name=\"INPUT_FILE\" value=\"\" />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <configuration name=\"main\" type=\"PythonConfigurationType\" factoryName=\"Python\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"Projeto-Banco\" />\r\n      <option name=\"INTERPRETER_OPTIONS\" value=\"\" />\r\n      <option name=\"PARENT_ENVS\" value=\"true\" />\r\n      <envs>\r\n        <env name=\"PYTHONUNBUFFERED\" value=\"1\" />\r\n      </envs>\r\n      <option name=\"SDK_HOME\" value=\"C:\\Python311\\python.exe\" />\r\n      <option name=\"SDK_NAME\" value=\"Python 3.11\" />\r\n      <option name=\"WORKING_DIRECTORY\" value=\"$PROJECT_DIR$/app\" />\r\n      <option name=\"IS_MODULE_SDK\" value=\"false\" />\r\n      <option name=\"ADD_CONTENT_ROOTS\" value=\"true\" />\r\n      <option name=\"ADD_SOURCE_ROOTS\" value=\"true\" />\r\n      <option name=\"SCRIPT_NAME\" value=\"$PROJECT_DIR$/app/main.py\" />\r\n      <option name=\"PARAMETERS\" value=\"\" />\r\n      <option name=\"SHOW_COMMAND_LINE\" value=\"false\" />\r\n      <option name=\"EMULATE_TERMINAL\" value=\"false\" />\r\n      <option name=\"MODULE_MODE\" value=\"false\" />\r\n      <option name=\"REDIRECT_INPUT\" value=\"false\" />\r\n      <option name=\"INPUT_FILE\" value=\"\" />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <list>\r\n      <item itemvalue=\"Python.cliente\" />\r\n      <item itemvalue=\"Python.conta\" />\r\n      <item itemvalue=\"Python.main\" />\r\n    </list>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Python.conta\" />\r\n        <item itemvalue=\"Python.cliente\" />\r\n        <item itemvalue=\"Python.main\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"08eb6305-c1ee-48b3-b6dc-42f53a701b63\" name=\"Changes\" comment=\"\" />\r\n      <created>1687967168554</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1687967168554</updated>\r\n    </task>\r\n    <servers />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 7452857816964769a373cac329bcac3f0f48b944)
++++ b/.idea/workspace.xml	(date 1689274047031)
+@@ -5,16 +5,22 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="08eb6305-c1ee-48b3-b6dc-42f53a701b63" name="Changes" comment="">
+-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/classes/contaPoupanca.py" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/app/mostrarBanco.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/mostrarBanco.py" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/classes/cliente.py" beforeDir="false" afterPath="$PROJECT_DIR$/classes/cliente.py" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/classes/conta.py" beforeDir="false" afterPath="$PROJECT_DIR$/classes/conta.py" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/classes/contaCorrente.py" beforeDir="false" afterPath="$PROJECT_DIR$/classes/contaCorrente.py" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+     <option name="LAST_RESOLUTION" value="IGNORE" />
++  </component>
++  <component name="FileTemplateManagerImpl">
++    <option name="RECENT_TEMPLATES">
++      <list>
++        <option value="Python Script" />
++      </list>
++    </option>
+   </component>
+   <component name="Git.Settings">
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+@@ -27,16 +33,16 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "RunOnceActivity.OpenProjectViewOnStart": "true",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "git-widget-placeholder": "main",
+-    "last_opened_file_path": "C:/Users/Emilly/Desktop/Trabalho tesi/Projeto-Banco"
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
++    &quot;last_opened_file_path&quot;: &quot;C:/Users/WebAcademy/PycharmProjects/banco/projeto-banco&quot;
+   }
+-}]]></component>
+-  <component name="RunManager" selected="Python.conta">
+-    <configuration name="cliente" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
++}</component>
++  <component name="RunManager" selected="Python.Atividade_evento-emilly">
++    <configuration name="Atividade_evento-emilly" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+       <module name="Projeto-Banco" />
+       <option name="INTERPRETER_OPTIONS" value="" />
+       <option name="PARENT_ENVS" value="true" />
+@@ -44,11 +50,11 @@
+         <env name="PYTHONUNBUFFERED" value="1" />
+       </envs>
+       <option name="SDK_HOME" value="" />
+-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/classes" />
++      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+       <option name="IS_MODULE_SDK" value="true" />
+       <option name="ADD_CONTENT_ROOTS" value="true" />
+       <option name="ADD_SOURCE_ROOTS" value="true" />
+-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/classes/cliente.py" />
++      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Atividade_evento-emilly.py" />
+       <option name="PARAMETERS" value="" />
+       <option name="SHOW_COMMAND_LINE" value="false" />
+       <option name="EMULATE_TERMINAL" value="false" />
+@@ -64,12 +70,35 @@
+       <envs>
+         <env name="PYTHONUNBUFFERED" value="1" />
+       </envs>
+-      <option name="SDK_HOME" value="" />
++      <option name="SDK_HOME" value="C:\Users\WebAcademy\PycharmProjects\banco\venv\Scripts\python.exe" />
++      <option name="SDK_NAME" value="Python 3.11 (banco)" />
+       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/classes" />
+-      <option name="IS_MODULE_SDK" value="true" />
++      <option name="IS_MODULE_SDK" value="false" />
+       <option name="ADD_CONTENT_ROOTS" value="true" />
+       <option name="ADD_SOURCE_ROOTS" value="true" />
+       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/classes/conta.py" />
++      <option name="PARAMETERS" value="" />
++      <option name="SHOW_COMMAND_LINE" value="false" />
++      <option name="EMULATE_TERMINAL" value="false" />
++      <option name="MODULE_MODE" value="false" />
++      <option name="REDIRECT_INPUT" value="false" />
++      <option name="INPUT_FILE" value="" />
++      <method v="2" />
++    </configuration>
++    <configuration name="contaCorrente" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
++      <module name="Projeto-Banco" />
++      <option name="INTERPRETER_OPTIONS" value="" />
++      <option name="PARENT_ENVS" value="true" />
++      <envs>
++        <env name="PYTHONUNBUFFERED" value="1" />
++      </envs>
++      <option name="SDK_HOME" value="C:\Users\WebAcademy\PycharmProjects\banco\venv\Scripts\python.exe" />
++      <option name="SDK_NAME" value="Python 3.11 (banco)" />
++      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/classes" />
++      <option name="IS_MODULE_SDK" value="false" />
++      <option name="ADD_CONTENT_ROOTS" value="true" />
++      <option name="ADD_SOURCE_ROOTS" value="true" />
++      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/classes/contaCorrente.py" />
+       <option name="PARAMETERS" value="" />
+       <option name="SHOW_COMMAND_LINE" value="false" />
+       <option name="EMULATE_TERMINAL" value="false" />
+@@ -85,8 +114,8 @@
+       <envs>
+         <env name="PYTHONUNBUFFERED" value="1" />
+       </envs>
+-      <option name="SDK_HOME" value="C:\Python311\python.exe" />
+-      <option name="SDK_NAME" value="Python 3.11" />
++      <option name="SDK_HOME" value="C:\Users\WebAcademy\PycharmProjects\banco\venv\Scripts\python.exe" />
++      <option name="SDK_NAME" value="Python 3.11 (banco)" />
+       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/app" />
+       <option name="IS_MODULE_SDK" value="false" />
+       <option name="ADD_CONTENT_ROOTS" value="true" />
+@@ -100,16 +129,41 @@
+       <option name="INPUT_FILE" value="" />
+       <method v="2" />
+     </configuration>
++    <configuration name="testeEz" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
++      <module name="Projeto-Banco" />
++      <option name="INTERPRETER_OPTIONS" value="" />
++      <option name="PARENT_ENVS" value="true" />
++      <envs>
++        <env name="PYTHONUNBUFFERED" value="1" />
++      </envs>
++      <option name="SDK_HOME" value="" />
++      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/classes" />
++      <option name="IS_MODULE_SDK" value="true" />
++      <option name="ADD_CONTENT_ROOTS" value="true" />
++      <option name="ADD_SOURCE_ROOTS" value="true" />
++      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/classes/testeEz.py" />
++      <option name="PARAMETERS" value="" />
++      <option name="SHOW_COMMAND_LINE" value="false" />
++      <option name="EMULATE_TERMINAL" value="false" />
++      <option name="MODULE_MODE" value="false" />
++      <option name="REDIRECT_INPUT" value="false" />
++      <option name="INPUT_FILE" value="" />
++      <method v="2" />
++    </configuration>
+     <list>
+-      <item itemvalue="Python.cliente" />
++      <item itemvalue="Python.Atividade_evento-emilly" />
++      <item itemvalue="Python.testeEz" />
++      <item itemvalue="Python.contaCorrente" />
+       <item itemvalue="Python.conta" />
+       <item itemvalue="Python.main" />
+     </list>
+     <recent_temporary>
+       <list>
+-        <item itemvalue="Python.conta" />
+-        <item itemvalue="Python.cliente" />
++        <item itemvalue="Python.Atividade_evento-emilly" />
++        <item itemvalue="Python.contaCorrente" />
+         <item itemvalue="Python.main" />
++        <item itemvalue="Python.testeEz" />
++        <item itemvalue="Python.conta" />
+       </list>
+     </recent_temporary>
+   </component>
+Index: classes/conta.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>class Conta:\r\n    _id =0\r\n    _contas=[]\r\n    def __init__(self, cli, sal=0,banco=None):\r\n        self.__numero = self.num()\r\n        self.__banco = banco\r\n        self.__titular = cli\r\n        self.__saldo = sal\r\n        self.incluirConta()\r\n#Métodos\r\n\r\n    @classmethod\r\n    def num(cls):\r\n        cls._id +=1\r\n        return cls._id\r\n\r\n    @property\r\n    def numero(self):\r\n        return self.__numero\r\n\r\n    @property\r\n    def titular(self):\r\n        return self.__titular\r\n\r\n    @titular.setter\r\n    def titular(self, value):\r\n        self.__titular = value\r\n\r\n    @property\r\n    def saldo(self):\r\n        return self.__saldo\r\n\r\n    def set_depositar(self,value):\r\n        self.__saldo = value\r\n\r\n    def set_sacar(self,value):\r\n        self.__saldo -= value\r\n\r\n    @property\r\n    def banco(self):\r\n        if self.__banco != None:\r\n            return self.__banco\r\n    def incluirConta(self):\r\n        Conta._contas.append(self)\r\n\r\n    @classmethod\r\n    def mostrarContas(cls):\r\n        return [i.titular for i in cls._contas]\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/classes/conta.py b/classes/conta.py
+--- a/classes/conta.py	(revision 7452857816964769a373cac329bcac3f0f48b944)
++++ b/classes/conta.py	(date 1688589917427)
+@@ -1,17 +1,17 @@
+ class Conta:
+-    _id =0
+-    _contas=[]
+-    def __init__(self, cli, sal=0,banco=None):
++    _id = 0
++    _contas = []
++
++    def __init__(self, cli, sal=0, banco=None):
+         self.__numero = self.num()
+         self.__banco = banco
+         self.__titular = cli
+         self.__saldo = sal
+-        self.incluirConta()
+-#Métodos
++        self.incluirConta(self)
+ 
+     @classmethod
+     def num(cls):
+-        cls._id +=1
++        cls._id += 1
+         return cls._id
+ 
+     @property
+@@ -30,18 +30,20 @@
+     def saldo(self):
+         return self.__saldo
+ 
+-    def set_depositar(self,value):
++    def set_depositar(self, value):
+         self.__saldo = value
+ 
+-    def set_sacar(self,value):
+-        self.__saldo -= value
++    @saldo.setter
++    def saldo(self, value):
++        self.__saldo = value
+ 
+     @property
+     def banco(self):
+-        if self.__banco != None:
+-            return self.__banco
+-    def incluirConta(self):
+-        Conta._contas.append(self)
++        return self.__banco
++
++    @classmethod
++    def incluirConta(cls, conta):
++        cls._contas.append(conta)
+ 
+     @classmethod
+     def mostrarContas(cls):
+Index: classes/contaCorrente.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>class ContaCorrente(Conta):\r\n    def __init__(self,cli,saldo,desconto,banco=None,):\r\n        super.__init__(self,cli,saldo,banco)\r\n        self.__desconto = desconto\r\n\r\n    @property\r\n    def deconto(self):\r\n        return self.__desconto\r\n\r\n    @deconto.setter\r\n    def deconto(self, value):\r\n        self.__desconto = value\r\n    def depositar(self, valor):\r\n        desco = valor * self.deconto\r\n        valor -= desco\r\n        self.saldo(valor)\r\n\r\n    def sacar(self, valor):\r\n        desconto = valor * self.desconto\r\n        valor -= desconto\r\n        if valor <= self.saldo:\r\n            self.saldo -= valor\r\n        else:\r\n            print(\"Saldo insuficiente.\")
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/classes/contaCorrente.py b/classes/contaCorrente.py
+--- a/classes/contaCorrente.py	(revision 7452857816964769a373cac329bcac3f0f48b944)
++++ b/classes/contaCorrente.py	(date 1688594787256)
+@@ -1,19 +1,17 @@
++from conta import Conta
++
+ class ContaCorrente(Conta):
+-    def __init__(self,cli,saldo,desconto,banco=None,):
+-        super.__init__(self,cli,saldo,banco)
++    def __init__(self, cli, saldo, desconto, banco=None):
++        super().__init__(cli, saldo, banco)
+         self.__desconto = desconto
+ 
+     @property
+-    def deconto(self):
++    def desconto(self):
+         return self.__desconto
+ 
+-    @deconto.setter
+-    def deconto(self, value):
++    @desconto.setter
++    def desconto(self, value):
+         self.__desconto = value
+-    def depositar(self, valor):
+-        desco = valor * self.deconto
+-        valor -= desco
+-        self.saldo(valor)
+ 
+     def sacar(self, valor):
+         desconto = valor * self.desconto
+@@ -21,4 +19,26 @@
+         if valor <= self.saldo:
+             self.saldo -= valor
+         else:
+-            print("Saldo insuficiente.")
+\ No newline at end of file
++            return False
++
++cc = ContaCorrente('kfje', 1000, 0.1, 'fkjw')
++
++print(cc.saldo)  # Saída: 1000
++print(cc.desconto)  # Saída: 0.1
++
++cc.set_depositar(500)
++print(cc.saldo)  # Saída: 1500
++
++cc.sacar(200)
++print(cc.saldo)  # Saída: 1300
++
++cc.desconto = 0.2
++print(cc.desconto)  # Saída: 0.2
++
++cc.set_depositar(1000)
++print(cc.saldo)  # Saída: 2300
++
++cc.sacar(3000)
++# Saída: Saldo insuficiente.
++
++print(cc.saldo)  # Saída: 2300 (saldo não foi alterado devido ao saldo insuficiente)
