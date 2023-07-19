@@ -12,7 +12,8 @@ from mostrarBanco import MostrarBanco
 from atualizarBanco import AtualizarBanco
 from cadastrarBanco import CadastrarBanco
 import sys
-#from PIL import Image, ImageTk
+from tkinter import ttk
+from PIL import Image, ImageTk
 #pode ser necessario instalar para usar a imagem 
 #pip install pillow
 
@@ -59,7 +60,19 @@ class TelaPrincipal:
         mnu_conta.add_command(label='Conta Corrente', command=self.abrir_conta_corrente)
         mnu_conta.add_command(label='Conta Poupança', command=self.abrir_conta_poupanca)
         mnu_conta.add_command(label='Minha conta',command=self.contas)
+    
+        # Carregar e exibir a imagem
+        imagem = Image.open(r"C:\Users\Emilly\Desktop\Trabalho tesi\Projeto-Banco\app\banco.png")
 
+        imagem = imagem.resize((300, 300))  # Redimensionar a imagem conforme necessário
+        self.minha_imagem = ImageTk.PhotoImage(imagem)
+
+        frame_imagem = ttk.Frame(self._janela)
+        frame_imagem.pack(pady=100, anchor='s')
+
+        label_imagem = ttk.Label(frame_imagem, image=self.minha_imagem)
+        label_imagem.pack()
+    
     # Funções para abrir as janelas
     def abrir_cadastrar_banco(self):
         self.adicionar_banco = CadastrarBanco(self._janela)
