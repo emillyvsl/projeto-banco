@@ -1,9 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
-from tkinter import filedialog
 from app.mostrarExtrato import MostrarExtrato
 
-from criarContaC import CriarContaC
 import sys
 
 sys.path.insert(0, './')
