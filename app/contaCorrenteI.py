@@ -12,14 +12,12 @@ sys.path.insert(0, './classes')
 from classes.contaCorrente import ContaCorrente
 
 
-
 class ContaCorrenteI:
     def mostrarContas(self):
         lista_contaC = ContaCorrente.mostrarContasC()
         for contaC in lista_contaC:
-            self.treeview.insert('', 'end', values=(contaC.numero, contaC.titular, contaC.banco)) 
-            
-
+            status = "Ativa" if contaC.status else "Encerrada"
+            self.treeview.insert('', 'end', values=(contaC.numero, contaC.titular, contaC.banco, status))
 
     def __init__(self, janela_anterior):
         self.janela_anterior = janela_anterior
@@ -27,7 +25,7 @@ class ContaCorrenteI:
         self._janela.title("Conta Corrente")
         self._janela.geometry('700x500')
 
-        colunas = ('ID', 'Titular', 'Banco')
+        colunas = ('ID', 'Titular', 'Banco', 'Status')
 
         self.treeview = ttk.Treeview(self._janela, columns=colunas, show='headings')
         self.treeview.grid(row=0, column=0, padx=10, pady=(10, 0), sticky='nsew')
@@ -45,6 +43,7 @@ class ContaCorrenteI:
         self.treeview.column('ID', minwidth=50, width=50)
         self.treeview.column('Titular', minwidth=200, width=200)
         self.treeview.column('Banco', minwidth=200, width=200)
+        self.treeview.column('Status', minwidth=100, width=100)  # Coluna para mostrar o status
 
         # Barra de rolagem
         scb = ttk.Scrollbar(self._janela, orient=tk.VERTICAL, command=self.treeview.yview)
@@ -71,7 +70,7 @@ class ContaCorrenteI:
         btn_incluir = tk.Button(btn_frame, text='Incluir')
         btn_incluir.pack(side='left', padx=5, pady=5, expand=True)
 
-        btn_excluir = tk.Button(btn_frame, text='Excluir', command=self.excluir)
+        btn_excluir = tk.Button(btn_frame, text='Excluir', command=self.excluir_conta_corrente)
         btn_excluir.pack(side='left', padx=5, pady=5, expand=True)
 
         btn_voltar = tk.Button(btn_frame, text='Voltar', command=self.voltar)
@@ -101,8 +100,13 @@ class ContaCorrenteI:
                     conta_encontrada = conta
                     break
             if conta_encontrada:
-                self.janela_depositar = Depositar(self._janela, conta_encontrada)
-                self.janela_depositar.abrir_janela()
+                if conta_encontrada.status:  # Verifica se a conta está ativa
+                    self.janela_depositar = Depositar(self._janela, conta_encontrada)
+                    self.janela_depositar.abrir_janela()
+                else:
+                    messagebox.showerror("Erro", "A conta está desativada e não pode ser usada.")
+            else:
+                messagebox.showerror("Erro", "Conta não encontrada.")
 
     def sacar(self):
         item_selecionado = self.treeview.focus()
@@ -115,10 +119,13 @@ class ContaCorrenteI:
                     conta_encontrada = conta
                     break
             if conta_encontrada:
-                self.janela_sacar = Sacar(self._janela, conta_encontrada)
-                self.janela_sacar.abrir_janela()
-
-
+                if conta_encontrada.status:  # Verifica se a conta está ativa
+                    self.janela_sacar = Sacar(self._janela, conta_encontrada)
+                    self.janela_sacar.abrir_janela()
+                else:
+                    messagebox.showerror("Erro", "A conta está desativada e não pode ser usada.")
+            else:
+                messagebox.showerror("Erro", "Conta não encontrada.")
     def historico(self):
         item_selecionado = self.treeview.focus()
         if item_selecionado:
@@ -129,9 +136,9 @@ class ContaCorrenteI:
                 if cliente.numero == numero_cliente:
                     cliente_encontrado = cliente
                     break
-            MostrarExtrato(self._janela,cliente_encontrado)
+            MostrarExtrato(self._janela, cliente_encontrado)
 
-    def excluir(self):
+    def excluir_conta_corrente(self):
         item_selecionado = self.treeview.focus()
         if item_selecionado:
             valores = self.treeview.item(item_selecionado)['values']
@@ -143,9 +150,9 @@ class ContaCorrenteI:
                     break
             if conta_encontrada:
                 if conta_encontrada.encerrarConta():
-                    self.mostrarContas()  # Atualiza a lista de contas após o encerramento
+                    messagebox.showinfo("Sucesso", "Conta corrente excluída com sucesso!")
+                    self.mostrarContas()  # Atualiza a lista de contas após a exclusão
                 else:
-                    messagebox.showerror("Erro", "Não é possível encerrar a conta. Verifique se o saldo é zero.")
+                    messagebox.showerror("Erro", "Não é possível excluir a conta. Verifique se o saldo é zero.")
             else:
                 messagebox.showerror("Erro", "Conta não encontrada.")
-            

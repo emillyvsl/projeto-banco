@@ -99,7 +99,7 @@ class Conta:
     def encerrarConta(self):
         if self.saldo == 0:  # Verifica se a conta possui saldo zero para poder ser encerrada
             self.status = False
-            self._historico.incluir(f'Conta do(a) senhor(a) {self.titular.nome} foi encerrada em {x}.')
+            self._historico.incluir(f'Conta do(a) senhor(a) {self.titular} foi encerrada em {x}.')
             return True
         else:
             return False  # A conta não pode ser encerrada pois possui saldo
