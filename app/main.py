@@ -59,7 +59,7 @@ class TelaPrincipal:
 
     
         # Carregar e exibir a imagem
-        imagem = Image.open(r"C:\Users\Emilly\Desktop\Trabalho tesi\Projeto-Banco\app\banco.png")
+        imagem = Image.open(r"/home/csi/Documentos/projeto-banco/app/banco.png")
 
         imagem = imagem.resize((300, 300))  # Redimensionar a imagem conforme necessário
         self.minha_imagem = ImageTk.PhotoImage(imagem)

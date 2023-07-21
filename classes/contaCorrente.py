@@ -23,10 +23,12 @@ class ContaCorrente(Conta):
         desconto = valor * self.desconto
         valor -= desconto
         if self.status:
-            self.saldo = valor
-            self._historico.incluir(f'Deposito de {valor},data/hora:{x}')
+            self.saldo += valor
+            self._historico.incluir(f'Deposito de {valor}, data/hora:{x}')
+            return True
         else:
-            return False  # Significa que a conta está desativada
+            raise ValueError("A conta está desativada. O depósito não pode ser realizado.")
+
 
     def set_sacar(self, valor):
         desconto = valor * self.desconto

@@ -1,5 +1,8 @@
 import tkinter as tk
 from tkinter import ttk
+from tkinter import messagebox
+from sacarC import Sacar
+from depositarC import Depositar
 from app.mostrarExtrato import MostrarExtrato
 
 import sys
@@ -68,7 +71,7 @@ class ContaCorrenteI:
         btn_incluir = tk.Button(btn_frame, text='Incluir')
         btn_incluir.pack(side='left', padx=5, pady=5, expand=True)
 
-        btn_excluir = tk.Button(btn_frame, text='Excluir')
+        btn_excluir = tk.Button(btn_frame, text='Excluir', command=self.excluir)
         btn_excluir.pack(side='left', padx=5, pady=5, expand=True)
 
         btn_voltar = tk.Button(btn_frame, text='Voltar', command=self.voltar)
@@ -91,30 +94,30 @@ class ContaCorrenteI:
         item_selecionado = self.treeview.focus()
         if item_selecionado:
             valores = self.treeview.item(item_selecionado)['values']
-            numero_cliente = valores[0]
+            numero_conta = valores[0]
             conta_encontrada = None
-            for cliente in ContaCorrente.mostrarContasC():
-                if cliente.numero == numero_cliente:
-                    conta_encontrada = cliente
+            for conta in ContaCorrente.mostrarContasC():
+                if conta.numero == numero_conta:
+                    conta_encontrada = conta
                     break
             if conta_encontrada:
-                # Exemplo de depósito de R$100 na conta
-                conta_encontrada.set_depositar(100)
-                # Atualizar a treeview
+                self.janela_depositar = Depositar(self._janela, conta_encontrada)
+                self.janela_depositar.abrir_janela()
 
     def sacar(self):
         item_selecionado = self.treeview.focus()
         if item_selecionado:
             valores = self.treeview.item(item_selecionado)['values']
-            numero_cliente = valores[0]
-            conta_encontrado = None
-            for cliente in ContaCorrente.mostrarContasC():
-                if cliente.numero == numero_cliente:
-                    conta_encontrado = cliente
+            numero_conta = valores[0]
+            conta_encontrada = None
+            for conta in ContaCorrente.mostrarContasC():
+                if conta.numero == numero_conta:
+                    conta_encontrada = conta
                     break
-            if conta_encontrado:
-                # Exemplo de saque de R$50 da conta
-                conta_encontrado.set_sacar(50)
+            if conta_encontrada:
+                self.janela_sacar = Sacar(self._janela, conta_encontrada)
+                self.janela_sacar.abrir_janela()
+
 
     def historico(self):
         item_selecionado = self.treeview.focus()
@@ -127,4 +130,22 @@ class ContaCorrenteI:
                     cliente_encontrado = cliente
                     break
             MostrarExtrato(self._janela,cliente_encontrado)
+
+    def excluir(self):
+        item_selecionado = self.treeview.focus()
+        if item_selecionado:
+            valores = self.treeview.item(item_selecionado)['values']
+            numero_conta = valores[0]
+            conta_encontrada = None
+            for conta in ContaCorrente.mostrarContasC():
+                if conta.numero == numero_conta:
+                    conta_encontrada = conta
+                    break
+            if conta_encontrada:
+                if conta_encontrada.encerrarConta():
+                    self.mostrarContas()  # Atualiza a lista de contas após o encerramento
+                else:
+                    messagebox.showerror("Erro", "Não é possível encerrar a conta. Verifique se o saldo é zero.")
+            else:
+                messagebox.showerror("Erro", "Conta não encontrada.")
             
