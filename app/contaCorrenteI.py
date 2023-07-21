@@ -14,6 +14,10 @@ from classes.contaCorrente import ContaCorrente
 
 class ContaCorrenteI:
     def mostrarContas(self):
+        # Limpar a tabela antes de adicionar as contas atualizadas
+        #for item in self.treeview.get_children():
+         #   self.treeview.delete(item)
+
         lista_contaC = ContaCorrente.mostrarContasC()
         for contaC in lista_contaC:
             status = "Ativa" if contaC.status else "Encerrada"
@@ -151,6 +155,8 @@ class ContaCorrenteI:
             if conta_encontrada:
                 if conta_encontrada.encerrarConta():
                     messagebox.showinfo("Sucesso", "Conta corrente excluída com sucesso!")
+                    self._janela.destroy()  # Fecha a janela de cadastro
+                    self.janela_anterior.deiconify()  # Exibe a janela anterior
                     self.mostrarContas()  # Atualiza a lista de contas após a exclusão
                 else:
                     messagebox.showerror("Erro", "Não é possível excluir a conta. Verifique se o saldo é zero.")
