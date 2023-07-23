@@ -63,9 +63,10 @@ class CriarContaC:
             return
 
         contaC = ContaCorrente(cliente_nome, banco_nome)
+        self._janela.destroy()  # Fecha a janela de cadastro
+        self.janela_anterior.deiconify()  # Exibe a janela anterior
         messagebox.showinfo("Sucesso", "Conta corrente cadastrada com sucesso!")
-        lbl_info = tk.Label(self._janela, text=f"ID: {contaC.numero}\nCliente: {contaC.titular}\nBanco: {contaC.banco}")
-        lbl_info.grid(row=3, columnspan=2, padx=10, pady=10)
+        
         
 
     def voltar(self):

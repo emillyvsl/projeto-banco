@@ -64,9 +64,10 @@ class CriarContaP:
             return
 
         contaP = ContaPoupanca(cliente_nome, banco_selecionado)
+        self._janela.destroy()  # Fecha a janela de cadastro
+        self.janela_anterior.deiconify()  # Exibe a janela anterior
         messagebox.showinfo("Sucesso", "Conta poupança cadastrada com sucesso!")
-        lbl_info = tk.Label(self._janela, text=f"ID: {contaP.numero}\nCliente: {contaP.titular}\nBanco: {contaP.banco}")
-        lbl_info.grid(row=6, columnspan=2)
+        
 
         
 

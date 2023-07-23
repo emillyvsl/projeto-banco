@@ -152,9 +152,9 @@ class ContaCorrenteI:
             if conta_encontrada:
                 if conta_encontrada.encerrarConta():
                     messagebox.showinfo("Sucesso", "Conta corrente excluída com sucesso!")
-                    self._janela.destroy()  # Fecha a janela de cadastro
-                    self.janela_anterior.deiconify()  # Exibe a janela anterior
-                    self.mostrarContas()  # Atualiza a lista de contas após a exclusão
+                    # Atualizar a tabela após a exclusão
+                    self.treeview.delete(*self.treeview.get_children())  # Limpa a tabela
+                    self.mostrarContas()  # Reinsere as contas na tabela
                 else:
                     messagebox.showerror("Erro", "Não é possível excluir a conta. Verifique se o saldo é zero.")
             else:
@@ -164,3 +164,9 @@ class ContaCorrenteI:
         # Abrir a janela de criar conta corrente
         self.janela_criar_conta_corrente = CriarContaC(self._janela, Cliente._clientes, Banco._lista)  # Passe os clientes e bancos como argumentos
         
+        # Aguardar até que a janela de criação seja destruída (após a inclusão ser confirmada)
+        self._janela.wait_window(self.janela_criar_conta_corrente._janela)
+
+        # Atualizar a tabela após a inclusão
+        self.treeview.delete(*self.treeview.get_children())  # Limpa a tabela
+        self.mostrarContas()  # Reinsere as contas na tabela
