@@ -6,7 +6,7 @@ class MostrarExtrato:
         self._cliente = cliente
         self.janela_anterior = janela_anterior
         self._janela = tk.Toplevel(janela_anterior)
-        self._janela.title("Conta Corrente")
+        self._janela.title("Extratos")
         self._janela.geometry('700x500')
 
         self.conteudo_lista = tk.Text(self._janela)

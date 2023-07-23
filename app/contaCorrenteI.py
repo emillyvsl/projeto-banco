@@ -5,9 +5,9 @@ from app.criarContaC import CriarContaC
 from banco import Banco
 from cliente import Cliente
 
-from sacarC import Sacar
-from depositarC import Depositar
-from app.mostrarExtrato import MostrarExtrato
+from sacar import Sacar
+from depositar import Depositar
+from mostrarExtrato import MostrarExtrato
 
 import sys
 

@@ -3,9 +3,9 @@ from tkinter import ttk
 
 import sys
 from tkinter import messagebox
-from app.depositarC import Depositar
-from app.mostrarExtrato import MostrarExtrato
-from app.sacarC import Sacar
+from depositar import Depositar
+from mostrarExtrato import MostrarExtrato
+from sacar import Sacar
 
 from cliente import Cliente
 

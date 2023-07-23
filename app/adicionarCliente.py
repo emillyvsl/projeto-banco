@@ -37,17 +37,21 @@ class AdicionarClientes:
         btn_voltar.pack(side='left', padx=5)
 
     def adicionarCliente(self):
-        if self.validar_cpf(self.ent_cpf.get()):
-            nome = self.ent_nome.get()
-            cpf = self.ent_cpf.get()
-            endereco = self.ent_endereco.get()
-            cli = Cliente(nome, cpf, endereco)
-            messagebox.showinfo("Sucesso", "Cliente cadastrado com sucesso!")
-            self._janela.destroy()  # Fecha a janela de cadastro
-            self.janela_anterior.deiconify()  # Exibe a janela anterior
+        nome = self.ent_nome.get()
+        cpf = self.ent_cpf.get()
+        endereco = self.ent_endereco.get()
+
+        if nome and cpf and endereco:
+            if self.validar_cpf(cpf):
+                cli = Cliente(nome, cpf, endereco)
+                messagebox.showinfo("Sucesso", "Cliente cadastrado com sucesso!")
+                self._janela.destroy()  # Fecha a janela de cadastro
+                self.janela_anterior.deiconify()  # Exibe a janela anterior
+            else:
+                messagebox.showinfo("CPF inválido", "Insira um CPF válido! Seu CPF deve estar no seguinte formato: XXXXXXXXXXX")
         else:
-            messagebox.showinfo("CPF invalido", "Insira um CPF valido!Seu CPF deves estar no seguinte formato:XXX.XXX.XXX-XX")
-        
+            messagebox.showinfo("Campos incompletos", "Preencha todos os campos obrigatórios!")
+
     def validar_cpf(self, cpf):
         # Remover caracteres especiais e espaços em branco
         cpf = ''.join(filter(str.isdigit, cpf))
