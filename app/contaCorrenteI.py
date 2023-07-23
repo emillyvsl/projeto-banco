@@ -1,6 +1,10 @@
 import tkinter as tk
 from tkinter import ttk
 from tkinter import messagebox
+from app.criarContaC import CriarContaC
+from banco import Banco
+from cliente import Cliente
+
 from sacarC import Sacar
 from depositarC import Depositar
 from app.mostrarExtrato import MostrarExtrato
@@ -23,10 +27,10 @@ class ContaCorrenteI:
             status = "Ativa" if contaC.status else "Encerrada"
             self.treeview.insert('', 'end', values=(contaC.numero, contaC.titular, contaC.banco, status))
 
-    def __init__(self, janela_anterior):
+    def __init__(self, janela_anterior, clientes, bancos):
         self.janela_anterior = janela_anterior
         self._janela = tk.Toplevel(janela_anterior)
-        self._janela.title("Conta Corrente")
+        self._janela.title("Lista de Conta Corrente")
         self._janela.geometry('700x500')
 
         colunas = ('ID', 'Titular', 'Banco', 'Status')
@@ -65,13 +69,8 @@ class ContaCorrenteI:
         btn_sacar = tk.Button(btn_frame, text='Sacar', command=self.sacar)
         btn_sacar.pack(side='left', padx=5, pady=5, expand=True)
 
-        btn_listar = tk.Button(btn_frame, text='Listar Contas', command=self.mostrarContas)
-        btn_listar.pack(side='left', padx=5, pady=5, expand=True)
 
-        btn_editar = tk.Button(btn_frame, text='Editar')
-        btn_editar.pack(side='left', padx=5, pady=5, expand=True)
-
-        btn_incluir = tk.Button(btn_frame, text='Incluir')
+        btn_incluir = tk.Button(btn_frame, text='Incluir', command=self.incluir)
         btn_incluir.pack(side='left', padx=5, pady=5, expand=True)
 
         btn_excluir = tk.Button(btn_frame, text='Excluir', command=self.excluir_conta_corrente)
@@ -162,3 +161,8 @@ class ContaCorrenteI:
                     messagebox.showerror("Erro", "Não é possível excluir a conta. Verifique se o saldo é zero.")
             else:
                 messagebox.showerror("Erro", "Conta não encontrada.")
+
+    def incluir(self):
+        # Abrir a janela de criar conta corrente
+        self.janela_criar_conta_corrente = CriarContaC(self._janela, Cliente._clientes, Banco._lista)  # Passe os clientes e bancos como argumentos
+        

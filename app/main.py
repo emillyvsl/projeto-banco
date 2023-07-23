@@ -59,7 +59,7 @@ class TelaPrincipal:
 
     
         # Carregar e exibir a imagem
-        imagem = Image.open(r"/home/csi/Documentos/projeto-banco/app/banco.png")
+        imagem = Image.open(r"C:\Users\sthef\OneDrive\Documentos\GitHub\Projeto-Banco\app\banco.png")
 
         imagem = imagem.resize((300, 300))  # Redimensionar a imagem conforme necessário
         self.minha_imagem = ImageTk.PhotoImage(imagem)
@@ -102,7 +102,7 @@ class TelaPrincipal:
             tk.messagebox.showerror("Erro", "Adicione clientes primeiro.")
 
     def abrir_conta_corrente(self):
-        ContaCorrenteI(self._janela)
+        ContaCorrenteI(self._janela, Cliente._clientes, Banco._lista)
 
     def abrir_conta_poupanca(self):
         ContaPoupancaI(self._janela, Banco.mostrarBancos())
