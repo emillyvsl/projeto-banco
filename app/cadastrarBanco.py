@@ -30,12 +30,17 @@ class CadastrarBanco:
 
     def cadastrarBanco(self):
         nome_banco = self.etr.get()
-        self.banco = Banco(nome_banco)  # Instância da classe Banco, passando o valor obtido do widget Entry
-        lbl = tk.Label(self._janela, text=f"ID: {self.banco.numero}\nNome: {self.banco.nome}")
-        lbl.grid(row=3, column=1, padx=10, pady=10)
-        self._janela.destroy()  # Fecha a janela de cadastro
-        self.janela_anterior.deiconify()  # Exibe a janela anterior
-        messagebox.showinfo("Sucesso", "Banco cadastrado com sucesso!")
+
+        # Verifica se o campo nome_banco está vazio
+        if nome_banco.strip() == "":
+            messagebox.showerror("Erro", "Por favor, insira um nome para o banco.")
+        else:
+            self.banco = Banco(nome_banco)  # Instância da classe Banco, passando o valor obtido do widget Entry
+            lbl = tk.Label(self._janela, text=f"ID: {self.banco.numero}\nNome: {self.banco.nome}")
+            lbl.grid(row=3, column=1, padx=10, pady=10)
+            self._janela.destroy()  # Fecha a janela de cadastro
+            self.janela_anterior.deiconify()  # Exibe a janela anterior
+            messagebox.showinfo("Sucesso", "Banco cadastrado com sucesso!")
         
 
     def voltar(self):
