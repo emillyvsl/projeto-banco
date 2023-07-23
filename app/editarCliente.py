@@ -41,8 +41,8 @@ class EditarCliente:
         endereco = self.entry_endereco.get()
 
         self._cliente.nome = nome
-        self._cliente.cpf = cpf
-        self._cliente.endereco = endereco
+        self._cliente.cpf = cpf  # Corrigido aqui - atribuir ao cpf do cliente
+        self._cliente.endereco = endereco  # Corrigido aqui - atribuir ao endereço do cliente
 
         messagebox.showinfo("Sucesso", "Cliente atualizado com sucesso!")
         self._janela.destroy()

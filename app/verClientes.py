@@ -60,7 +60,6 @@ class VerClientes:
 
         btn_incluir = tk.Button(frame_btn, text='Incluir', command=self.incluir_cliente)
         btn_incluir.grid(row=5, column=2)
- 
 
         btn = tk.Button(frame_btn, text='Voltar', command=self.voltar)
         btn.grid(row=5, column=3)
@@ -78,7 +77,11 @@ class VerClientes:
                     break
             if cliente_encontrado:
                 # Abrir a janela de edição do cliente
-                EditarCliente(cliente_encontrado)
+                janela_edicao = EditarCliente(cliente_encontrado)
+                self._janela.wait_window(janela_edicao._janela)
+                # Atualizar a listagem de clientes
+                self.treeview.delete(*self.treeview.get_children())
+                self.mostrarClientes()
             else:
                 messagebox.showerror("Erro", "Cliente não encontrado.")
 
@@ -95,20 +98,25 @@ class VerClientes:
                     break
             if cliente_encontrado:
                 # Excluir o cliente
-                sucesso = Cliente.removerCliente(cliente_encontrado)
-                if sucesso:
-                    messagebox.showinfo("Sucesso", "Cliente excluído com sucesso!")
-                    # Remover o item da treeview
-                    self.treeview.delete(item_selecionado)
-                else:
-                    messagebox.showerror("Erro", "Não foi possível excluir o cliente. Verifique se existem contas vinculadas a ele.")
+                resposta = messagebox.askokcancel("Confirmação", "Tem certeza que deseja excluir o cliente selecionado?")
+                if resposta:
+                    sucesso = Cliente.removerCliente(cliente_encontrado)
+                    if sucesso:
+                        messagebox.showinfo("Sucesso", "Cliente excluído com sucesso!")
+                        # Remover o item da treeview
+                        self.treeview.delete(item_selecionado)
+                    else:
+                        messagebox.showerror("Erro", "Não foi possível excluir o cliente. Verifique se existem contas vinculadas a ele.")
             else:
                 messagebox.showerror("Erro", "Cliente não encontrado.")
 
     def incluir_cliente(self):
-        AdicionarClientes(self._janela)
-
-            
+        # Abrir a janela de inclusão do cliente
+        janela_inclusao = AdicionarClientes(self._janela)
+        self._janela.wait_window(janela_inclusao._janela)
+        # Atualizar a listagem de clientes
+        self.treeview.delete(*self.treeview.get_children())
+        self.mostrarClientes()
 
     def voltar(self):
         self._janela.destroy()
