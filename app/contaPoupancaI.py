@@ -2,7 +2,10 @@ import tkinter as tk
 from tkinter import ttk
 
 import sys
+from tkinter import messagebox
+from app.depositarC import Depositar
 from app.mostrarExtrato import MostrarExtrato
+from app.sacarC import Sacar
 
 from cliente import Cliente
 
@@ -14,18 +17,18 @@ from classes.banco import Banco  # Importe a classe Banco
 
 class ContaPoupancaI:
     def mostrarContas(self):
-        lista_contaC = ContaPoupanca.mostrarContasP()
-        for contaC in lista_contaC:
-            self.treeview.insert('', 'end', values=(contaC.numero, contaC.titular, contaC.banco.nome))
-
+        lista_contaP = ContaPoupanca.mostrarContasP()
+        for contaP in lista_contaP:
+            status = "Ativa" if contaP.status else "Encerrada"
+            self.treeview.insert('', 'end', values=(contaP.numero, contaP.titular, contaP.banco.nome, status))
 
     def __init__(self, janela_anterior, bancos):  # Adicione o argumento bancos
         self.janela_anterior = janela_anterior
         self._janela = tk.Toplevel(janela_anterior)
-        self._janela.title("Conta Poupança")
+        self._janela.title("Lista de Conta Poupança")
         self._janela.geometry('700x500')
 
-        colunas = ('ID', 'Titular', 'Banco')
+        colunas = ('ID', 'Titular', 'Banco', 'Status')  # Adicione a coluna 'Status'
 
         self.treeview = ttk.Treeview(self._janela, columns=colunas, show='headings')
         self.treeview.grid(row=0, column=0, padx=10, pady=(10, 0), sticky='nsew')
@@ -43,6 +46,7 @@ class ContaPoupancaI:
         self.treeview.column('ID', minwidth=50, width=50)
         self.treeview.column('Titular', minwidth=200, width=200)
         self.treeview.column('Banco', minwidth=200, width=200)
+        self.treeview.column('Status', minwidth=100, width=100)  # Coluna para mostrar o status
 
         # Barra de rolagem
         scb = ttk.Scrollbar(self._janela, orient=tk.VERTICAL, command=self.treeview.yview)
@@ -50,6 +54,8 @@ class ContaPoupancaI:
         self.treeview.config(yscrollcommand=scb.set)
 
         self.mostrarContas()
+
+
 
         btn_frame = tk.Frame(self._janela)
         btn_frame.grid(row=1, column=0, padx=10, pady=10, sticky='nsew')
@@ -60,8 +66,6 @@ class ContaPoupancaI:
         btn_sacar = tk.Button(btn_frame, text='Sacar',command=self.sacar)
         btn_sacar.pack(side='left', padx=5, pady=5, expand=True)
 
-        btn_listar = tk.Button(btn_frame, text='Listar Contas', command=self.mostrarContas)
-        btn_listar.pack(side='left', padx=5, pady=5, expand=True)
 
         btn_editar = tk.Button(btn_frame, text='Editar')
         btn_editar.pack(side='left', padx=5, pady=5, expand=True)
@@ -103,33 +107,47 @@ class ContaPoupancaI:
                     break
             MostrarExtrato(self._janela,cliente_encontrado)
         
+  
+
+
     def depositar(self):
         item_selecionado = self.treeview.focus()
         if item_selecionado:
             valores = self.treeview.item(item_selecionado)['values']
-            numero_cliente = valores[0]
+            numero_conta = valores[0]
             conta_encontrada = None
-            for cliente in ContaPoupanca.mostrarContasP():
-                if cliente.numero == numero_cliente:
-                    conta_encontrada = cliente
+            for conta in ContaPoupanca.mostrarContasP():
+                if conta.numero == numero_conta:
+                    conta_encontrada = conta
                     break
             if conta_encontrada:
-                # Exemplo de depósito de R$100 na conta
-                conta_encontrada.set_depositar(100)
-                # Atualizar a treeview
+                if conta_encontrada.status:  # Verifica se a conta está ativa
+                    self.janela_depositar = Depositar(self._janela, conta_encontrada)
+                    self.janela_depositar.abrir_janela()
+                else:
+                    messagebox.showerror("Erro", "A conta está desativada e não pode ser usada.")
+            else:
+                messagebox.showerror("Erro", "Conta não encontrada.")
 
     def sacar(self):
         item_selecionado = self.treeview.focus()
         if item_selecionado:
             valores = self.treeview.item(item_selecionado)['values']
-            numero_cliente = valores[0]
-            conta_encontrado = None
-            for cliente in ContaPoupanca.mostrarContasP():
-                if cliente.numero == numero_cliente:
-                    conta_encontrado = cliente
+            numero_conta = valores[0]
+            conta_encontrada = None
+            for conta in ContaPoupanca.mostrarContasP():
+                if conta.numero == numero_conta:
+                    conta_encontrada = conta
                     break
-            if conta_encontrado:
-                # Exemplo de saque de R$50 da conta
-                conta_encontrado.set_sacar(50)
+            if conta_encontrada:
+                if conta_encontrada.status:  # Verifica se a conta está ativa
+                    self.janela_sacar = Sacar(self._janela, conta_encontrada)
+                    self.janela_sacar.abrir_janela()
+                else:
+                    messagebox.showerror("Erro", "A conta está desativada e não pode ser usada.")
+            else:
+                messagebox.showerror("Erro", "Conta não encontrada.")
+
+  
 
             

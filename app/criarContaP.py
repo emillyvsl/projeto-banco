@@ -15,7 +15,7 @@ class CriarContaP:
     def __init__(self, janela_anterior, clientes, bancos):
         self.janela_anterior = janela_anterior
         self._janela = tk.Toplevel(janela_anterior)
-        self._janela.title("Criar Conta Corrente")
+        self._janela.title("Criar Conta Poupança")
         self._janela.geometry('700x500')
         
 

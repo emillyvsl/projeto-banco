@@ -18,9 +18,7 @@ from classes.contaCorrente import ContaCorrente
 
 class ContaCorrenteI:
     def mostrarContas(self):
-        # Limpar a tabela antes de adicionar as contas atualizadas
-        #for item in self.treeview.get_children():
-         #   self.treeview.delete(item)
+    
 
         lista_contaC = ContaCorrente.mostrarContasC()
         for contaC in lista_contaC:

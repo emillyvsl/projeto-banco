@@ -59,15 +59,7 @@ class Conta:
         else:
             return False  # Significa que a conta está desativada
 
-    # def set_sacar(self, value):
-    #     if self.status:
-    #         if value <= self.saldo:
-    #             self.__saldo -= value
-    #             return True  # Se o saque for bem-sucedido, retorna verdadeiro
-    #         else:
-    #             return False  # Se for falso, significa que não há saldo suficiente
-    #     else:
-    #         return False  # Significa que a conta não está ativa
+  
     def set_sacar(self, valor):
         if self.status:
             if valor <= self.saldo:
