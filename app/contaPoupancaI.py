@@ -67,13 +67,10 @@ class ContaPoupancaI:
         btn_sacar.pack(side='left', padx=5, pady=5, expand=True)
 
 
-        btn_editar = tk.Button(btn_frame, text='Editar')
-        btn_editar.pack(side='left', padx=5, pady=5, expand=True)
-
         btn_incluir = tk.Button(btn_frame, text='Incluir', command=self.incluir)
         btn_incluir.pack(side='left', padx=5, pady=5, expand=True)
 
-        btn_excluir = tk.Button(btn_frame, text='Excluir')
+        btn_excluir = tk.Button(btn_frame, text='Excluir', command=self.excluir_conta_corrente)
         btn_excluir.pack(side='left', padx=5, pady=5, expand=True)
 
         btn_voltar = tk.Button(btn_frame, text='Voltar', command=self.voltar)
@@ -147,6 +144,33 @@ class ContaPoupancaI:
                     messagebox.showerror("Erro", "A conta está desativada e não pode ser usada.")
             else:
                 messagebox.showerror("Erro", "Conta não encontrada.")
+
+    def excluir_conta_corrente(self):
+        item_selecionado = self.treeview.focus()
+        if item_selecionado:
+            valores = self.treeview.item(item_selecionado)['values']
+            numero_conta = valores[0]
+            conta_encontrada = None
+            for conta in ContaPoupanca.mostrarContasP():
+                if conta.numero == numero_conta:
+                    conta_encontrada = conta
+                    break
+            if conta_encontrada:
+                if conta_encontrada.encerrarConta():
+                    messagebox.showinfo("Sucesso", "Conta corrente excluída com sucesso!")
+                    self._janela.destroy()  # Fecha a janela de cadastro
+                    self.janela_anterior.deiconify()  # Exibe a janela anterior
+                    self.mostrarContas()  # Atualiza a lista de contas após a exclusão
+                else:
+                    messagebox.showerror("Erro", "Não é possível excluir a conta. Verifique se o saldo é zero.")
+            else:
+                messagebox.showerror("Erro", "Conta não encontrada.")
+
+    def incluir(self):
+        # Abrir a janela de criar conta corrente
+        self.janela_criar_conta_corrente = CriarContaP(self._janela, Cliente._clientes, Banco._lista)  # Passe os clientes e bancos como argumentos
+        
+
 
   
 

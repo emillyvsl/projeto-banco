@@ -48,7 +48,7 @@ class MostrarBanco:
         btn_editar = tk.Button(frame_btn, text='Editar', command=self.editar_banco)
         btn_editar.grid(row=5, column=0)
 
-        btn_excluir = tk.Button(frame_btn, text='Excluir')  # ,command=self.excluir
+        btn_excluir = tk.Button(frame_btn, text='Excluir', command=self.excluir_banco)  # Adicione command=self.excluir_banco
         btn_excluir.grid(row=5, column=1)
 
         btn_incluir = tk.Button(frame_btn, text='Incluir', command=self.incluir_banco)
@@ -75,6 +75,25 @@ class MostrarBanco:
                 EditarBanco(banco_encontrado)
             else:
                 messagebox.showerror("Erro", "Banco não encontrado.")
+
+    def excluir_banco(self):
+        item_selecionado = self.treeview.focus()
+        if item_selecionado:
+            resposta = messagebox.askokcancel("Confirmação", "Tem certeza que deseja excluir o banco selecionado?")
+            if resposta:
+                valores = self.treeview.item(item_selecionado)['values']
+                numero_banco = valores[0]
+                banco_encontrado = None
+                for banco in self.lista_bancos:
+                    if banco.numero == numero_banco:
+                        banco_encontrado = banco
+                        break
+
+                if banco_encontrado:
+                    Banco._lista.remove(banco_encontrado)
+                    self.treeview.delete(item_selecionado)  # Atualiza a tabela após a exclusão
+                else:
+                    messagebox.showerror("Erro", "Banco não encontrado.")
 
 
 
