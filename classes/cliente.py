@@ -1,12 +1,9 @@
-# from conta import Conta
-# from contaCorrente import ContaCorrente
-# from contaPoupanca import ContaPoupanca
+
 from historico import Historico
 class Cliente:
     _id = 0
     _clientes = []
-
-    def __init__(self, n, e, cpf=0):
+    def __init__(self, n, cpf, e):
         self.__num = self.num()
         self.__nome = n
         self.__endereco = e

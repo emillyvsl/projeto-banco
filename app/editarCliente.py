@@ -13,6 +13,9 @@ class EditarCliente:
         self._janela = tk.Toplevel()
         self._janela.title("Editar Cliente")
         self._janela.geometry('400x300')
+        print(cliente.nome)
+        print(cliente.cpf)
+        print(cliente.endereco)
 
         lbl_nome = tk.Label(self._janela, text="Nome:")
         lbl_nome.pack()
