@@ -58,7 +58,7 @@ class Cliente:
     @classmethod
     def removerCliente(cls, cliente):
         if cliente in Cliente._clientes:
-            Cliente._clientes.remove(cliente)
+            Cliente._clientes.remove(cliente)#remove da lista
             return True
         else:
             return False
