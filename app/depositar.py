@@ -28,7 +28,7 @@ class Depositar:
             valor = int(valor)
             resultado = self.conta_corrente.set_depositar(valor)
             if resultado:
-                messagebox.showinfo("Sucesso", f"Depósito de R${valor} realizado com sucesso!")
+                messagebox.showinfo("Sucesso", f"Depósito de R${valor} reais realizado com sucesso!")
                 self._janela.destroy()
                 self.janela_anterior.deiconify()
             else:

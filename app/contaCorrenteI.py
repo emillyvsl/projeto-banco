@@ -64,8 +64,11 @@ class ContaCorrenteI:
         btn_depositar = tk.Button(btn_frame, text='Depositar', command=self.depositar)
         btn_depositar.pack(side='left', padx=5, pady=5, expand=True)
 
-        btn_sacar = tk.Button(btn_frame, text='Sacar', command=self.sacar)
+        btn_sacar = tk.Button(btn_frame, text='Sacar',command=self.sacar)
         btn_sacar.pack(side='left', padx=5, pady=5, expand=True)
+
+        btn_saldo = tk.Button(btn_frame, text='Saldo',command=self.saldo)
+        btn_saldo.pack(side='left', padx=5, pady=5, expand=True)
 
 
         btn_incluir = tk.Button(btn_frame, text='Incluir', command=self.incluir)
@@ -127,6 +130,27 @@ class ContaCorrenteI:
                     messagebox.showerror("Erro", "A conta está desativada e não pode ser usada.")
             else:
                 messagebox.showerror("Erro", "Conta não encontrada.")
+
+    def saldo(self):
+        item_selecionado = self.treeview.focus()
+        if item_selecionado:
+            valores = self.treeview.item(item_selecionado)['values']
+            numero_conta = valores[0]
+            conta_encontrada = None
+            for conta in ContaCorrente.mostrarContasC():
+                if conta.numero == numero_conta:
+                    conta_encontrada = conta
+                    break
+            if conta_encontrada:
+                if conta_encontrada.status:  # Verifica se a conta está ativa
+                    messagebox.showinfo('Saldo',f"Seu saldo atual é de {conta_encontrada.saldo}")
+                else:
+                    messagebox.showerror("Erro", "A conta está desativada e não pode ser usada.")
+            else:
+                messagebox.showerror("Erro", "Conta não encontrada.")
+
+
+
     def historico(self):
         item_selecionado = self.treeview.focus()
         if item_selecionado:

@@ -2,6 +2,7 @@ class Historico:
     contas_criadas = []
     def __init__(self):
         self._relatorio= []
+        
     #metodo para listar todas as contas independente do banco
     @classmethod
     def adicionar_conta(cls, conta):
@@ -12,7 +13,7 @@ class Historico:
         return cls.contas_criadas
     
     #relatorios/extrato, salva as operações feitas
-    # nas contas, cada conta possuiu seu historico independente de estar ativada ou nao
+    # nas contas, cada conta possuiu seu historico independente de estar ativada ou não
     def incluir(self,value):
         self._relatorio.append(value)
         

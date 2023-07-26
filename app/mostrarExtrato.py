@@ -28,8 +28,16 @@ class MostrarExtrato:
         self.conteudo_lista.delete("1.0", tk.END)
 
         # Insere o conteúdo da lista no widget de texto
-        for item in lista_informacoes:
-            self.conteudo_lista.insert(tk.END, item + "\n")
+        if len(lista_informacoes) == 0:
+            self._cliente.saldo 
+            lista_informacoes = self._cliente.extrato()
+            for item in lista_informacoes:
+                self.conteudo_lista.insert(tk.END, item + "\n")
+
+        else:
+            # self.conteudo_lista.delete(0, tk.END)
+            for item in lista_informacoes:
+                self.conteudo_lista.insert(tk.END, item + "\n")
 
         # Desabilita a entrada de informações no widget de texto
         self.conteudo_lista.config(state=tk.DISABLED)

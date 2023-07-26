@@ -36,6 +36,7 @@ class ContaPoupanca(Conta):
             if valor <= self.saldo:
                 self.saldo -= valor
                 self._historico.incluir(f'Saque de {valor}, data/hora:{x}')
+                self.saldo#chamando para atualizar o saldo atual no extrato
                 return True
             else:
                 return "sem saldo"
