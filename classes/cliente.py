@@ -57,11 +57,11 @@ class Cliente:
 
     @classmethod
     def removerCliente(cls, cliente):
-        for i in Historico.listar_contas():
-            if cliente.numero == i.titular.numero:
-                return False
-        cliente.status = False
-        return True
+        if cliente in Cliente._clientes:
+            Cliente._clientes.remove(cliente)
+            return True
+        else:
+            return False
 
 
     @classmethod
