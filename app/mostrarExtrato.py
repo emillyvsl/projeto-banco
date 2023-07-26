@@ -31,6 +31,9 @@ class MostrarExtrato:
         for item in lista_informacoes:
             self.conteudo_lista.insert(tk.END, item + "\n")
 
+        # Desabilita a entrada de informações no widget de texto
+        self.conteudo_lista.config(state=tk.DISABLED)
+
     def salvar_arquivo(self):
         arquivo = filedialog.asksaveasfile(defaultextension=".txt")
 

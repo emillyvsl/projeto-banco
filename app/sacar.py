@@ -25,12 +25,12 @@ class Sacar:
     def sacar(self):
         valor = self.etr_valor.get()
         if valor and valor.isdigit():
-            valor = int(valor)
+            valor = float(valor)
             resultado = self.conta_corrente.set_sacar(valor)
             if resultado == "sem saldo":
                 messagebox.showerror("Erro", "Saldo insuficiente para o saque.")
             elif resultado:
-                messagebox.showinfo("Sucesso", f"Saque de R${valor} realizado com sucesso!")
+                messagebox.showinfo("Sucesso", f"Saque de R${valor} reais realizado com sucesso!")
                 self._janela.destroy()
                 self.janela_anterior.deiconify()
             else:
